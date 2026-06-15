@@ -1,0 +1,255 @@
+# =============================================================
+# WELCOME BOOK — EXEMPLO PREENCHIDO
+# Hospedagem fictícia: Pousada Vento Leste (Jericoacoara, CE)
+# Fixture de referência do gerador OFS Digital
+# =============================================================
+
+meta:
+  version: "1.0"
+  generated_by: "OFS Digital"
+  languages: [pt, en, es]
+
+brand:
+  name: "Pousada Vento Leste"
+  logo: "assets/logo.png"
+  theme: "editorial"            # editorial | clean | dark_lux | custom
+  accent_override: ""           # vazio = usa o terracota padrão do tema
+  badge: "Superhost"
+
+property:
+  type: "pousada"
+  address:
+    street: "Rua das Dunas, 215"
+    neighborhood: "Centro"
+    city: "Jericoacoara"
+    state: "CE"
+    zip: "62598-000"
+  maps_url: "https://maps.google.com/?q=Rua+das+Dunas,+215,+Jericoacoara"
+  airport:
+    name: "Aeroporto Regional de Jericoacoara (JJD)"
+    address: "Rod. CE-085, s/n — Cruz, CE"
+    taxi_avg_price: "R$ 120,00 (transfer 4x4 compartilhado: R$ 60,00 por pessoa)"
+
+checkin:
+  time: "14:00"
+  checkout_time: "12:00"
+  reception_hours: "07:00 às 22:00"
+  luggage_storage: true
+  access_steps:
+    pt: >-
+      Jericoacoara não tem ruas asfaltadas: o acesso é feito por veículos 4x4
+      ou buggy. Ao chegar à vila, siga até a Rua das Dunas e procure o portão
+      de madeira com a placa da pousada. Apresente-se na recepção com o
+      documento de cada hóspede para fazer o check-in.
+    en: >-
+      Jericoacoara has no paved streets: access is by 4x4 vehicles or buggy.
+      When you arrive in the village, head to Rua das Dunas and look for the
+      wooden gate with the pousada sign. Present each guest's ID at the
+      reception desk to check in.
+    es: >-
+      Jericoacoara no tiene calles asfaltadas: el acceso es en vehículos 4x4
+      o buggy. Al llegar al pueblo, diríjase a la Rua das Dunas y busque el
+      portón de madera con el letrero de la posada. Presente el documento de
+      cada huésped en la recepción para hacer el check-in.
+  door_code_info:
+    pt: "As chaves do chalé são entregues na recepção no momento do check-in."
+    en: "Your chalet keys are handed over at reception upon check-in."
+    es: "Las llaves del chalé se entregan en la recepción al hacer el check-in."
+  vehicle_info:
+    pt: >-
+      Carros particulares não circulam dentro da vila. Se vier dirigindo,
+      estacione no estacionamento credenciado na entrada de Jeri (a partir de
+      R$ 30,00/dia) e avise a recepção para organizarmos o traslado da bagagem.
+    en: >-
+      Private cars are not allowed inside the village. If driving, park at the
+      authorized lot at the entrance of Jeri (from R$ 30.00/day) and let
+      reception know so we can arrange luggage transfer.
+    es: >-
+      Los coches particulares no circulan dentro del pueblo. Si viene
+      conduciendo, estacione en el aparcamiento autorizado en la entrada de
+      Jeri (desde R$ 30,00/día) y avise a la recepción para organizar el
+      traslado del equipaje.
+
+wifi:
+  network: "VentoLeste_Guest"
+  password: "brisadomar2026"
+
+amenities:
+  - double_bed
+  - single_bed
+  - pool
+  - tv
+  - wifi
+  - dining_table
+  - fridge
+  - coffee_maker
+  - gourmet_area
+  - restaurant
+amenities_note:
+  pt: >-
+    Café da manhã incluso, servido das 7h às 10h no restaurante. A energia da
+    vila pode oscilar — use os aparelhos elétricos com moderação. Itens podem
+    variar entre os chalés.
+  en: >-
+    Breakfast is included, served from 7 to 10 am at the restaurant. The
+    village power supply can fluctuate — please use electrical appliances in
+    moderation. Features may vary between chalets.
+  es: >-
+    Desayuno incluido, servido de 7 a 10 h en el restaurante. La energía del
+    pueblo puede oscilar — use los aparatos eléctricos con moderación. Los
+    equipamientos pueden variar entre los chalés.
+
+rules:
+  - pt: "Não é permitido fumar dentro dos chalés. Há cinzeiros nas varandas e áreas abertas."
+    en: "Smoking is not allowed inside the chalets. Ashtrays are available on the balconies and open areas."
+    es: "No se permite fumar dentro de los chalés. Hay ceniceros en las terrazas y áreas abiertas."
+  - pt: "Trate o espaço com cuidado, deixando-o como o recebeu, para que o próximo hóspede tenha a mesma recepção."
+    en: "Treat the space with care, leaving it as you found it, so the next guest enjoys the same welcome."
+    es: "Trate el espacio con cuidado, dejándolo tal como lo recibió, para que el próximo huésped tenga la misma bienvenida."
+  - pt: "Silêncio entre 22h e 7h — os chalés são próximos uns dos outros."
+    en: "Quiet hours from 10 pm to 7 am — the chalets are close to one another."
+    es: "Silencio entre las 22h y las 7h — los chalés están cerca unos de otros."
+  - pt: "Somente hóspedes registrados nas áreas internas. Festas não são permitidas."
+    en: "Registered guests only in the indoor areas. Parties are not allowed."
+    es: "Solo huéspedes registrados en las áreas internas. No se permiten fiestas."
+  - pt: "Areia fica do lado de fora: use os lava-pés na entrada de cada chalé."
+    en: "Sand stays outside: please use the foot-washing stations at each chalet entrance."
+    es: "La arena se queda afuera: use los lavapiés en la entrada de cada chalé."
+  - pt: "Comunique imediatamente à recepção qualquer problema ou dano durante a estadia."
+    en: "Report any problem or damage to reception immediately during your stay."
+    es: "Informe de inmediato a la recepción cualquier problema o daño durante su estancia."
+
+extras:
+  parking:
+    pt: "Estacionamento credenciado na entrada da vila, a partir de R$ 30,00/dia. A pousada organiza o traslado da bagagem."
+    en: "Authorized parking at the village entrance, from R$ 30.00/day. The pousada arranges luggage transfer."
+    es: "Aparcamiento autorizado en la entrada del pueblo, desde R$ 30,00/día. La posada organiza el traslado del equipaje."
+  garbage:
+    pt: "Acondicione o lixo em sacos fechados e deposite no coletor ao lado da recepção. Jeri é uma APA — ajude a preservar."
+    en: "Place garbage in sealed bags and leave it in the bin next to reception. Jeri is a protected area — help us preserve it."
+    es: "Coloque la basura en bolsas cerradas y déjela en el contenedor junto a la recepción. Jeri es un área protegida — ayude a preservarla."
+  rentals:
+    pt: "Alugamos pranchas de windsurf e kitesurf, sandboards e bugues com bugueiro credenciado."
+    en: "We rent windsurf and kitesurf boards, sandboards and buggies with licensed drivers."
+    es: "Alquilamos tablas de windsurf y kitesurf, sandboards y buggies con conductores autorizados."
+  emergency_contact: "+55 88 99100-0000"
+  emergency_numbers:
+    - { label: "SAMU", number: "192" }
+    - label: { pt: "Bombeiros", en: "Fire Dept.", es: "Bomberos" }
+      number: "193"
+    - label: { pt: "Polícia", en: "Police", es: "Policía" }
+      number: "190"
+
+highlights:
+  - photo: "assets/rooms/chale.jpg"
+    title: { pt: "Chalés", en: "Chalets", es: "Chalés" }
+    text:
+      pt: "Chalés de madeira com varanda e rede, ventilador de teto e decoração artesanal cearense — rústico por fora, confortável por dentro."
+      en: "Wooden chalets with balcony and hammock, ceiling fan and handcrafted decor from Ceará — rustic outside, comfortable inside."
+      es: "Chalés de madera con terraza y hamaca, ventilador de techo y decoración artesanal de Ceará — rústicos por fuera, cómodos por dentro."
+  - photo: "assets/rooms/piscina.jpg"
+    title: { pt: "Piscina", en: "Pool", es: "Piscina" }
+    text:
+      pt: "Piscina cercada por coqueiros, com espreguiçadeiras e bar de sucos naturais — perfeita para o fim de tarde depois das dunas."
+      en: "A pool surrounded by coconut trees, with sun loungers and a fresh juice bar — perfect for late afternoons after the dunes."
+      es: "Piscina rodeada de cocoteros, con tumbonas y bar de jugos naturales — perfecta para la tarde después de las dunas."
+  - photo: "assets/rooms/restaurante.jpg"
+    title: { pt: "Restaurante", en: "Restaurant", es: "Restaurante" }
+    text:
+      pt: "Café da manhã regional com tapioca feita na hora, frutas do sertão e bolo de rolo — servido com vista para o jardim."
+      en: "Regional breakfast with freshly made tapioca, local fruits and traditional cakes — served overlooking the garden."
+      es: "Desayuno regional con tapioca hecha al momento, frutas locales y dulces tradicionales — servido con vista al jardín."
+
+eat:
+  - name: "Mangaba Beira-Mar"
+    photo: "assets/places/mangaba.jpg"
+    price: "$$$"
+    cuisine: { pt: "Frutos do mar", en: "Seafood", es: "Mariscos" }
+    address: "Av. Beira Mar, 480"
+    tip:
+      pt: "Peça a moqueca de camarão e reserve mesa na areia para o pôr do sol."
+      en: "Order the shrimp moqueca and book a table on the sand for sunset."
+      es: "Pida la moqueca de camarones y reserve mesa en la arena para el atardecer."
+  - name: "Tapiocaria da Vila"
+    photo: "assets/places/tapiocaria.jpg"
+    price: "$"
+    cuisine: { pt: "Tapiocas e lanches", en: "Tapiocas & snacks", es: "Tapiocas y bocadillos" }
+    address: "Rua Principal, 102"
+    tip:
+      pt: "A de carne de sol com queijo coalho é a queridinha dos hóspedes."
+      en: "The sun-dried beef with coalho cheese is a guest favorite."
+      es: "La de carne de sol con queso coalho es la favorita de los huéspedes."
+  - name: "Forno do Vaqueiro"
+    photo: "assets/places/forno.jpg"
+    price: "$$"
+    cuisine: { pt: "Cozinha regional", en: "Regional cuisine", es: "Cocina regional" }
+    address: "Rua do Forró, 58"
+  - name: "Gelato das Dunas"
+    photo: "assets/places/gelato.jpg"
+    price: "$"
+    cuisine: { pt: "Sorveteria artesanal", en: "Artisan gelato", es: "Heladería artesanal" }
+    address: "Rua Principal, 230"
+
+visit:
+  - name:
+      pt: "Duna do Pôr do Sol"
+      en: "Sunset Dune"
+      es: "Duna del Atardecer"
+    photo: "assets/places/duna.jpg"
+    note:
+      pt: "O ritual de Jeri: suba a duna por volta das 16h30 e aplauda o sol se pondo no mar."
+      en: "Jeri's ritual: climb the dune around 4:30 pm and applaud the sun setting over the sea."
+      es: "El ritual de Jeri: suba la duna hacia las 16:30 y aplauda el sol poniéndose en el mar."
+  - name:
+      pt: "Pedra Furada"
+      en: "Pedra Furada (Arched Rock)"
+      es: "Pedra Furada (Roca Horadada)"
+    photo: "assets/places/pedrafurada.jpg"
+    note:
+      pt: "Caminhada de 40 min pela praia na maré baixa — confira a tábua de marés na recepção."
+      en: "A 40-minute beach walk at low tide — check the tide chart at reception."
+      es: "Caminata de 40 min por la playa en marea baja — consulte la tabla de mareas en la recepción."
+  - name:
+      pt: "Lagoa do Paraíso"
+      en: "Paraíso Lagoon"
+      es: "Laguna del Paraíso"
+    photo: "assets/places/lagoa.jpg"
+    note:
+      pt: "Águas cristalinas e redes dentro da lagoa. Passeio de buggy de meio dia — reservamos para você."
+      en: "Crystal-clear water and in-water hammocks. Half-day buggy trip — we can book it for you."
+      es: "Aguas cristalinas y hamacas dentro de la laguna. Paseo en buggy de medio día — lo reservamos por usted."
+kids_note:
+  pt: "A Lagoa do Paraíso é rasa e tranquila, ideal para crianças. Na vila, a praia principal tem mar calmo pela manhã."
+  en: "Paraíso Lagoon is shallow and calm, ideal for kids. In the village, the main beach has gentle waters in the morning."
+  es: "La Laguna del Paraíso es poco profunda y tranquila, ideal para niños. En el pueblo, la playa principal tiene mar calmo por la mañana."
+
+checkout_checklist:
+  - { pt: "Confira seus pertences — não deixe nada para trás", en: "Pack your belongings — make sure nothing is left behind", es: "Revise sus pertenencias — no deje nada atrás" }
+  - { pt: "Desligue luzes, ventiladores e aparelhos", en: "Turn off lights, fans and appliances", es: "Apague luces, ventiladores y aparatos" }
+  - { pt: "Deixe as toalhas usadas no cesto do banheiro", en: "Leave used towels in the bathroom basket", es: "Deje las toallas usadas en el cesto del baño" }
+  - { pt: "Feche portas e janelas do chalé", en: "Close the chalet doors and windows", es: "Cierre las puertas y ventanas del chalé" }
+  - { pt: "Devolva as chaves na recepção e faça o check-out", en: "Return the keys at reception and check out", es: "Devuelva las llaves en la recepción y haga el check-out" }
+
+host:
+  name: "Marina & Tales"
+  photo: "assets/host.jpg"
+  message:
+    pt: >-
+      Oi, sejam muito bem-vindos à Vento Leste! Construímos esta pousada para
+      compartilhar o que Jeri tem de melhor: o vento, as dunas e a vida sem
+      pressa. Qualquer coisa que precisarem, é só chamar na recepção ou no
+      WhatsApp. Aproveitem cada pôr do sol!
+    en: >-
+      Hi, welcome to Vento Leste! We built this pousada to share the best of
+      Jeri: the wind, the dunes and the unhurried life. If you need anything,
+      just reach out at reception or on WhatsApp. Enjoy every sunset!
+    es: >-
+      ¡Hola, bienvenidos a Vento Leste! Construimos esta posada para
+      compartir lo mejor de Jeri: el viento, las dunas y la vida sin prisa.
+      Cualquier cosa que necesiten, llámennos en la recepción o por WhatsApp.
+      ¡Disfruten cada atardecer!
+  whatsapp: "+5588991000000"
+  email: "reservas@ventoleste.com.br"
+  instagram: "@pousadaventoleste"
+  facebook: "pousadaventoleste"
+  review_url: "https://airbnb.com.br/...link-de-avaliacao"

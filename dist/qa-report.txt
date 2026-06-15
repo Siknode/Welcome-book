@@ -1,0 +1,29 @@
+QA REPORT - Welcome Book
+Status: PASSOU
+
+Arquivos:
+- C:/Users/oriso/OneDrive/Área de Trabalho/Welcome-Book/dist/welcome-book.html
+- C:/Users/oriso/OneDrive/Área de Trabalho/Welcome-Book/dist/welcome-book.pdf
+- C:/Users/oriso/OneDrive/Área de Trabalho/Welcome-Book/dist/qa-report.txt
+
+Checks:
+- Zero placeholders: OK
+- Tradução completa: OK
+- Ortografia/encoding básico: OK
+- Consistência estrutural: OK
+- Dados críticos presentes: OK
+- Links testados: OK
+- Peso e páginas: OK (184531 bytes HTML, 294230 bytes PDF, 37 páginas)
+
+Itens por seção:
+- rules: 6
+- highlights: 3
+- eat: 4
+- visit: 3
+- checkout_checklist: 5
+
+Avisos:
+- Nenhum
+
+Erros:
+- Nenhum

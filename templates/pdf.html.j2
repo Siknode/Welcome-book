@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>{{ brand.name }} | PDF</title>
+  <style>
+    :root {
+      --bg: {{ theme.bg }};
+      --surface: {{ theme.surface }};
+      --ink: {{ theme.ink }};
+      --ink-soft: {{ theme.ink_soft }};
+      --accent: {{ theme.accent }};
+      --hairline: {{ theme.hairline }};
+    }
+    @page { size: 540pt 1168.5pt; margin: 0; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page {
+      width: 540pt;
+      height: 1168.5pt;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      padding: 54pt 44pt 66pt;
+      background: var(--bg);
+    }
+    .cover {
+      display: grid;
+      align-content: end;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.72)),
+        url("{{ cover_image }}") center/cover no-repeat;
+    }
+    .eyebrow {
+      margin: 0 0 10pt;
+      color: var(--accent);
+      font-size: 10pt;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .cover .eyebrow { color: #fff; opacity: .9; }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1.04;
+    }
+    h1 { max-width: 8.5ch; font-size: 64pt; }
+    h2 { margin-bottom: 20pt; font-size: 38pt; }
+    h3 { font-size: 21pt; }
+    p { margin: 0 0 12pt; font-size: 13.5pt; }
+    .muted { color: var(--ink-soft); }
+    .logo { width: 68pt; height: 68pt; object-fit: contain; margin-bottom: 24pt; background: var(--accent); border-radius: 50%; }
+    .cover-links { display: flex; gap: 10pt; margin-top: 30pt; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34pt;
+      border: 1pt solid currentColor;
+      border-radius: 999pt;
+      padding: 7pt 13pt;
+      font-size: 10pt;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .toc-list { display: grid; gap: 12pt; margin-top: 28pt; }
+    .toc-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 18pt;
+      padding-bottom: 10pt;
+      border-bottom: .75pt solid var(--hairline);
+      font-size: 15pt;
+    }
+    .hero-photo {
+      width: calc(100% + 88pt);
+      height: 330pt;
+      object-fit: cover;
+      margin: -54pt -44pt 34pt;
+    }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+    .metric {
+      padding: 16pt;
+      border: .75pt solid var(--hairline);
+      background: var(--surface);
+    }
+    .metric small {
+      display: block;
+      margin-bottom: 5pt;
+      color: var(--ink-soft);
+      font-size: 8.5pt;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .metric strong { font-size: 26pt; line-height: 1.1; }
+    .stack { display: grid; gap: 12pt; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12pt; }
+    .card {
+      border: .75pt solid var(--hairline);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .card img { width: 100%; height: 150pt; object-fit: cover; }
+    .card div { padding: 13pt; }
+    .rule {
+      display: grid;
+      grid-template-columns: 42pt 1fr;
+      gap: 13pt;
+      padding: 14pt 0;
+      border-bottom: .75pt solid var(--hairline);
+    }
+    .rule b { color: var(--accent); font-size: 11pt; letter-spacing: .14em; }
+    .amenities {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 9pt;
+    }
+    .amenity {
+      min-height: 72pt;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 5pt;
+      padding: 8pt 5pt;
+      border: .75pt solid var(--hairline);
+      background: var(--surface);
+      text-align: center;
+      font-size: 8.8pt;
+      line-height: 1.25;
+    }
+    .amenity svg { width: 18pt; height: 18pt; color: var(--accent); }
+    .wifi {
+      display: grid;
+      place-items: center;
+      min-height: 560pt;
+      text-align: center;
+      border: .75pt solid var(--hairline);
+      background: var(--surface);
+    }
+    .wifi strong {
+      display: block;
+      margin: 15pt 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 54pt;
+      line-height: .95;
+      overflow-wrap: anywhere;
+    }
+    .place {
+      display: grid;
+      grid-template-columns: 160pt 1fr;
+      gap: 16pt;
+      align-items: center;
+      padding: 12pt 0;
+      border-bottom: .75pt solid var(--hairline);
+    }
+    .place img {
+      width: 160pt;
+      height: 120pt;
+      object-fit: contain;
+      background: var(--surface);
+      border: .75pt solid var(--hairline);
+    }
+    .host-photo {
+      width: 220pt;
+      height: 220pt;
+      object-fit: cover;
+      border: .75pt solid var(--hairline);
+    }
+    .footer {
+      position: absolute;
+      left: 44pt;
+      right: 44pt;
+      bottom: 28pt;
+      display: flex;
+      justify-content: space-between;
+      color: var(--ink-soft);
+      font-size: 9pt;
+      border-top: .75pt solid var(--hairline);
+      padding-top: 10pt;
+    }
+    .footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <section class="page cover" id="cover">
+    <div>
+      <img class="logo" src="{{ logo_image }}" alt="{{ brand.name }}">
+      <p class="eyebrow">{{ ui.pt.coverEyebrow }}</p>
+      <h1>{{ brand.name }}</h1>
+      <p style="max-width:330pt;margin-top:18pt">{{ ui.pt.coverText }}</p>
+      <div class="cover-links">
+        {% for lang in languages %}
+        <a class="pill" href="#toc-{{ lang }}">{{ labels.language_codes[lang] }}</a>
+        {% endfor %}
+      </div>
+      <p style="margin-top:28pt">{{ meta.generated_by }} · {{ meta.version }}</p>
+    </div>
+  </section>
+
+  {% for lang in languages %}
+  <section class="page" id="toc-{{ lang }}">
+    <p class="eyebrow">{{ labels.language_names[lang] }}</p>
+    <h2>{{ ui[lang].summaryTitle }}</h2>
+    <div class="toc-list">
+      {% for item in toc %}
+      <a href="#{{ item.id }}-{{ lang }}"><span>{{ ui[lang][item.title_key] }}</span><span>{{ "%02d"|format(loop.index) }}</span></a>
+      {% endfor %}
+    </div>
+    <div class="footer"><a href="#cover">{{ ui[lang].backCover }}</a><span>{{ brand.name }}</span></div>
+  </section>
+
+  <section class="page" id="checkin-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].checkinEyebrow }}</p>
+    <h2>{{ ui[lang].checkinTitle }}</h2>
+    <div class="two">
+      <div class="metric"><small>{{ ui[lang].labelCheckin }}</small><strong>{{ checkin.time }}</strong></div>
+      <div class="metric"><small>{{ ui[lang].labelCheckout }}</small><strong>{{ checkin.checkout_time }}</strong></div>
+    </div>
+    <div class="stack" style="margin-top:24pt">
+      <p>{{ checkin.access_steps[lang] }}</p>
+      <p>{{ checkin.vehicle_info[lang] }}</p>
+      <p>{{ checkin.door_code_info[lang] }}</p>
+    </div>
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].checkinTitle }}</span></div>
+  </section>
+
+  <section class="page" id="welcome-{{ lang }}">
+    <img class="hero-photo" src="{{ cover_image }}" alt="{{ ui[lang].welcomeTitle }}">
+    <p class="eyebrow">{{ ui[lang].welcomeEyebrow }}</p>
+    <h2>{{ ui[lang].welcomeTitle }}</h2>
+    <p>{{ host.message[lang] }}</p>
+    <div class="grid">
+      {% for item in highlights %}
+      <article class="card"><img src="{{ item.image }}" alt="{{ item.title[lang] }}"><div><h3>{{ item.title[lang] }}</h3><p>{{ item.text[lang] }}</p></div></article>
+      {% endfor %}
+    </div>
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].welcomeTitle }}</span></div>
+  </section>
+
+  <section class="page" id="location-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].locationEyebrow }}</p>
+    <h2>{{ ui[lang].locationTitle }}</h2>
+    <div class="metric" style="margin-bottom:20pt"><small>{{ ui[lang].addressLabel }}</small><strong style="font-size:20pt">{{ address }}</strong></div>
+    <p>{{ ui[lang].airportLabel }}: {{ property.airport.name }} - {{ property.airport.address }}</p>
+    <p>{{ ui[lang].taxiLabel }}: {{ property.airport.taxi_avg_price }}</p>
+    <p>{{ ui[lang].mapsButton }}: <a href="{{ property.maps_url }}">{{ property.maps_url }}</a></p>
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].locationTitle }}</span></div>
+  </section>
+
+  <section class="page" id="wifi-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].wifiEyebrow }}</p>
+    <h2>{{ ui[lang].wifiTitle }}</h2>
+    <div class="wifi">
+      <div>
+        <p class="muted">{{ ui[lang].wifiNetworkLabel }}</p>
+        <p style="font-size:18pt">{{ wifi.network }}</p>
+        <p class="muted">{{ ui[lang].wifiPasswordLabel }}</p>
+        <strong>{{ wifi.password }}</strong>
+        <p>{{ ui[lang].homePhrase }}</p>
+      </div>
+    </div>
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].wifiTitle }}</span></div>
+  </section>
+
+  <section class="page" id="amenities-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].amenitiesEyebrow }}</p>
+    <h2>{{ ui[lang].amenitiesTitle }}</h2>
+    <div class="amenities">
+      {% for key in amenities %}
+      <div class="amenity">{{ icons.spark|safe }}<span>{{ amenity_labels[key][lang] }}</span></div>
+      {% endfor %}
+    </div>
+    <p style="margin-top:20pt">{{ amenities_note[lang] }}</p>
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].amenitiesTitle }}</span></div>
+  </section>
+
+  <section class="page" id="rules-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].rulesEyebrow }}</p>
+    <h2>{{ ui[lang].rulesTitle }}</h2>
+    {% for item in rules %}
+    <div class="rule"><b>{{ "%02d"|format(loop.index) }}</b><p>{{ item[lang] }}</p></div>
+    {% endfor %}
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].rulesTitle }}</span></div>
+  </section>
+
+  <section class="page" id="practical-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].practicalEyebrow }}</p>
+    <h2>{{ ui[lang].practicalTitle }}</h2>
+    <p><strong>{{ ui[lang].parking }}</strong><br>{{ extras.parking[lang] }}</p>
+    <p><strong>{{ ui[lang].garbage }}</strong><br>{{ extras.garbage[lang] }}</p>
+    {% if extras.rentals %}<p><strong>{{ ui[lang].rentals }}</strong><br>{{ extras.rentals[lang] }}</p>{% endif %}
+    <p><strong>{{ ui[lang].emergency }}</strong><br><a href="tel:{{ extras.emergency_contact }}">{{ extras.emergency_contact }}</a></p>
+    {% for item in extras.emergency_numbers %}
+      <p>{% if item.label is string %}{{ item.label }}{% else %}{{ item.label[lang] }}{% endif %}: <a href="tel:{{ item.number }}">{{ item.number }}</a></p>
+    {% endfor %}
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].practicalTitle }}</span></div>
+  </section>
+
+  <section class="page" id="eat-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].eatEyebrow }}</p>
+    <h2>{{ ui[lang].eatTitle }}</h2>
+    {% for item in eat %}
+    <article class="place"><img src="{{ item.image }}" alt="{{ item.name }}"><div><h3>{{ item.name }}</h3><p class="muted">{{ item.price }} · {{ item.cuisine[lang] }}</p><p>{{ item.address }}</p>{% if item.tip %}<p>{{ item.tip[lang] }}</p>{% endif %}</div></article>
+    {% endfor %}
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].eatTitle }}</span></div>
+  </section>
+
+  <section class="page" id="visit-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].visitEyebrow }}</p>
+    <h2>{{ ui[lang].visitTitle }}</h2>
+    {% for item in visit %}
+    <article class="place"><img src="{{ item.image }}" alt="{{ item.name[lang] }}"><div><h3>{{ item.name[lang] }}</h3><p>{{ item.note[lang] }}</p></div></article>
+    {% endfor %}
+    {% if kids_note %}<p style="margin-top:16pt">{{ kids_note[lang] }}</p>{% endif %}
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].visitTitle }}</span></div>
+  </section>
+
+  <section class="page" id="checkout-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].checkoutEyebrow }}</p>
+    <h2>{{ ui[lang].checkoutTitle }}</h2>
+    <div class="metric"><small>{{ ui[lang].labelCheckout }}</small><strong>{{ checkin.checkout_time }}</strong></div>
+    <div style="margin-top:20pt">
+      {% for item in checkout_checklist %}
+      <div class="rule"><b>OK</b><p>{{ item[lang] }}</p></div>
+      {% endfor %}
+    </div>
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].checkoutTitle }}</span></div>
+  </section>
+
+  <section class="page" id="contact-{{ lang }}">
+    <p class="eyebrow">{{ ui[lang].contactEyebrow }}</p>
+    <h2>{{ ui[lang].contactTitle }}</h2>
+    <div class="two" style="align-items:start">
+      <img class="host-photo" src="{{ host_image }}" alt="{{ host.name }}">
+      <div>
+        <h3>{{ host.name }}</h3>
+        <p>{{ host.message[lang] }}</p>
+        <p>WhatsApp: <a href="{{ wa_url }}">{{ host.whatsapp }}</a></p>
+        <p>Email: <a href="mailto:{{ host.email }}">{{ host.email }}</a></p>
+        <p>Instagram: {{ host.instagram }}</p>
+        <p>Facebook: {{ host.facebook }}</p>
+        <p>{{ ui[lang].reviewButton }}: <a href="{{ host.review_url }}">{{ host.review_url }}</a></p>
+      </div>
+    </div>
+    <div class="footer"><a href="#toc-{{ lang }}">{{ ui[lang].backSummary }}</a><span>{{ ui[lang].contactTitle }}</span></div>
+  </section>
+  {% endfor %}
+</body>
+</html>

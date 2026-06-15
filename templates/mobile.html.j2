@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ brand.name }} | Welcome Book</title>
+  <style>
+    :root {
+      --bg: {{ theme.bg }};
+      --surface: {{ theme.surface }};
+      --ink: {{ theme.ink }};
+      --ink-soft: {{ theme.ink_soft }};
+      --accent: {{ theme.accent }};
+      --hairline: {{ theme.hairline }};
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    body::after {
+      content: "";
+      display: block;
+      height: calc(88px + var(--safe-bottom));
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button, a.action { min-height: 44px; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      border-bottom: 1px solid var(--hairline);
+      backdrop-filter: blur(10px);
+    }
+    .mark { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .mark img { width: 34px; height: 34px; object-fit: contain; background: var(--accent); border-radius: 50%; }
+    .mark strong { overflow: hidden; font-size: 14px; white-space: nowrap; text-overflow: ellipsis; }
+    .lang { display: flex; gap: 6px; }
+    .lang button {
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: var(--surface);
+      color: var(--ink);
+      font: 700 11px/1 Inter, Arial, sans-serif;
+      letter-spacing: .12em;
+    }
+    .lang button.active { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .hero {
+      min-height: 78svh;
+      display: grid;
+      align-items: end;
+      padding: 24px 20px 44px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.68)),
+        url("{{ cover_image }}") center/cover no-repeat;
+      color: #fff;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font: 800 11px/1 Inter, Arial, sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .hero .eyebrow { color: #fff; opacity: .86; }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1.05;
+    }
+    h1 { max-width: 9ch; font-size: clamp(44px, 17vw, 74px); }
+    h2 { margin-bottom: 18px; font-size: 34px; }
+    h3 { font-size: 23px; }
+    p { margin: 0; }
+    .hero p { max-width: 34ch; margin-top: 14px; font-size: 16px; }
+    section { padding: 34px 20px; scroll-margin-top: 70px; }
+    .band { border-top: 1px solid var(--hairline); }
+    .surface { background: var(--surface); }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .metric {
+      padding: 16px;
+      border: 1px solid var(--hairline);
+      background: var(--surface);
+    }
+    .metric small {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+    .metric strong { display: block; font-size: 26px; line-height: 1.1; }
+    .stack { display: grid; gap: 14px; }
+    .photo-card {
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      background: var(--surface);
+    }
+    .photo-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .photo-card div { padding: 16px; }
+    .list { display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; }
+    .rule {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .rule b { color: var(--accent); font-size: 13px; letter-spacing: .14em; }
+    .amenities {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .amenity {
+      min-height: 88px;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 7px;
+      padding: 10px 6px;
+      border: 1px solid var(--hairline);
+      background: var(--surface);
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    .icon { width: 23px; height: 23px; color: var(--accent); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .action, .copy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 11px 16px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .copy { cursor: pointer; }
+    .wifi-box {
+      padding: 30px 18px;
+      border: 1px solid var(--hairline);
+      background: var(--surface);
+      text-align: center;
+    }
+    .wifi-box strong {
+      display: block;
+      margin: 10px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 13vw, 58px);
+      line-height: .95;
+      overflow-wrap: anywhere;
+    }
+    .place {
+      display: grid;
+      grid-template-columns: minmax(150px, 46%) 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .place:nth-child(even) { grid-template-columns: 1fr minmax(150px, 46%); }
+    .place:nth-child(even) img { order: 2; }
+    .place img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: contain;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+    }
+    .muted { color: var(--ink-soft); }
+    .host {
+      display: grid;
+      gap: 16px;
+      text-align: center;
+    }
+    .host img {
+      width: min(72vw, 260px);
+      aspect-ratio: 1;
+      object-fit: cover;
+      margin: 0 auto;
+      border: 1px solid var(--hairline);
+    }
+    .badge {
+      display: inline-block;
+      margin: 12px auto 0;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 30;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      padding: 7px 8px calc(7px + var(--safe-bottom));
+      background: color-mix(in srgb, var(--surface) 96%, transparent);
+      border-top: 1px solid var(--hairline);
+      backdrop-filter: blur(12px);
+    }
+    .bottom-nav a {
+      display: grid;
+      justify-items: center;
+      gap: 3px;
+      color: var(--ink-soft);
+      font-size: 10px;
+      line-height: 1.1;
+      text-decoration: none;
+    }
+    .bottom-nav a.active { color: var(--accent); }
+    .bottom-nav svg { width: 22px; height: 22px; }
+    .toplink {
+      position: fixed;
+      right: 14px;
+      bottom: calc(82px + var(--safe-bottom));
+      z-index: 25;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+    }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    @media (max-width: 340px) {
+      section { padding-inline: 14px; }
+      .amenities { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .place, .place:nth-child(even) { grid-template-columns: 1fr; }
+      .place:nth-child(even) img { order: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header id="top" class="topbar">
+    <div class="mark">
+      <img src="{{ logo_image }}" alt="{{ brand.name }}">
+      <strong>{{ brand.name }}</strong>
+    </div>
+    <div class="lang" aria-label="Language">
+      {% for lang in languages %}
+      <button type="button" data-lang="{{ lang }}">{{ labels.language_codes[lang] }}</button>
+      {% endfor %}
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <p class="eyebrow" data-i18n="coverEyebrow"></p>
+        <h1>{{ brand.name }}</h1>
+        <p data-i18n="coverText"></p>
+        {% if brand.badge %}<span class="badge">{{ brand.badge }}</span>{% endif %}
+      </div>
+    </section>
+
+    <section class="band" id="checkin">
+      <p class="eyebrow" data-i18n="checkinEyebrow"></p>
+      <h2 data-i18n="checkinTitle"></h2>
+      <div class="split">
+        <div class="metric"><small data-i18n="labelCheckin"></small><strong>{{ checkin.time }}</strong></div>
+        <div class="metric"><small data-i18n="labelCheckout"></small><strong>{{ checkin.checkout_time }}</strong></div>
+      </div>
+      <div class="stack" style="margin-top:18px">
+        <p data-i18n="accessSteps"></p>
+        <p data-i18n="vehicleInfo"></p>
+        <p data-i18n="doorCodeInfo"></p>
+      </div>
+    </section>
+
+    <section class="band surface" id="welcome">
+      <p class="eyebrow" data-i18n="welcomeEyebrow"></p>
+      <h2 data-i18n="welcomeTitle"></h2>
+      <p data-i18n="hostMessage"></p>
+      <div class="stack" id="highlights" style="margin-top:20px"></div>
+    </section>
+
+    <section class="band" id="location">
+      <p class="eyebrow" data-i18n="locationEyebrow"></p>
+      <h2 data-i18n="locationTitle"></h2>
+      <p id="addressText"></p>
+      <p class="muted" id="airportText" style="margin-top:10px"></p>
+      <div class="actions"><a class="action" href="{{ property.maps_url }}" target="_blank" rel="noopener" data-i18n="mapsButton"></a></div>
+    </section>
+
+    <section class="band surface" id="wifi">
+      <p class="eyebrow" data-i18n="wifiEyebrow"></p>
+      <h2 data-i18n="wifiTitle"></h2>
+      <div class="wifi-box">
+        <p class="muted" data-i18n="wifiNetworkLabel"></p>
+        <p>{{ wifi.network }}</p>
+        <p class="muted" data-i18n="wifiPasswordLabel" style="margin-top:16px"></p>
+        <strong>{{ wifi.password }}</strong>
+        <button class="copy" type="button" data-copy="{{ wifi.password }}" data-i18n="copyButton"></button>
+        <p class="muted" data-i18n="homePhrase" style="margin-top:14px"></p>
+      </div>
+    </section>
+
+    <section class="band" id="amenities">
+      <p class="eyebrow" data-i18n="amenitiesEyebrow"></p>
+      <h2 data-i18n="amenitiesTitle"></h2>
+      <div class="amenities" id="amenitiesGrid"></div>
+      <p class="muted" data-i18n="amenitiesNote" style="margin-top:16px"></p>
+    </section>
+
+    <section class="band surface" id="rules">
+      <p class="eyebrow" data-i18n="rulesEyebrow"></p>
+      <h2 data-i18n="rulesTitle"></h2>
+      <ul class="list" id="rulesList"></ul>
+    </section>
+
+    <section class="band" id="practical">
+      <p class="eyebrow" data-i18n="practicalEyebrow"></p>
+      <h2 data-i18n="practicalTitle"></h2>
+      <div class="stack" id="practicalList"></div>
+    </section>
+
+    <section class="band surface" id="eatvisit">
+      <p class="eyebrow" data-i18n="eatEyebrow"></p>
+      <h2 data-i18n="eatTitle"></h2>
+      <div id="eatList"></div>
+      <h2 data-i18n="visitTitle" style="margin-top:32px"></h2>
+      <div id="visitList"></div>
+      <p class="muted" data-i18n="kidsNote" style="margin-top:16px"></p>
+    </section>
+
+    <section class="band" id="checkout">
+      <p class="eyebrow" data-i18n="checkoutEyebrow"></p>
+      <h2 data-i18n="checkoutTitle"></h2>
+      <div class="metric"><small data-i18n="labelCheckout"></small><strong>{{ checkin.checkout_time }}</strong></div>
+      <ul class="list" id="checkoutList" style="margin-top:16px"></ul>
+    </section>
+
+    <section class="band surface" id="contact">
+      <p class="eyebrow" data-i18n="contactEyebrow"></p>
+      <h2 data-i18n="contactTitle"></h2>
+      <div class="host">
+        <img src="{{ host_image }}" alt="{{ host.name }}">
+        <h3>{{ host.name }}</h3>
+        <p data-i18n="hostMessage"></p>
+        <div class="actions" style="justify-content:center">
+          <a class="action" href="{{ wa_url }}">WhatsApp</a>
+          <a class="action" href="tel:{{ host.whatsapp }}">Tel</a>
+          <a class="action" href="mailto:{{ host.email }}">Email</a>
+          <a class="action" href="{{ host.review_url }}" target="_blank" rel="noopener" data-i18n="reviewButton"></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="#top" class="toplink" aria-label="Top">↑</a>
+  <nav class="bottom-nav" aria-label="Main">
+    <a href="#home" data-nav="home">{{ icons.home|safe }}<span data-i18n="navHome"></span></a>
+    <a href="#location" data-nav="location">{{ icons.map|safe }}<span data-i18n="navLocation"></span></a>
+    <a href="#wifi" data-nav="wifi">{{ icons.wifi|safe }}<span data-i18n="navWifi"></span></a>
+    <a href="#eatvisit" data-nav="eatvisit">{{ icons.pin|safe }}<span data-i18n="navEatVisit"></span></a>
+    <a href="#contact" data-nav="contact">{{ icons.phone|safe }}<span data-i18n="navContact"></span></a>
+  </nav>
+
+  <script id="wb-data" type="application/json">{{ payload_json|safe }}</script>
+  <script>
+    const data = JSON.parse(document.getElementById("wb-data").textContent);
+    let currentLang = data.languages[0];
+    const icon = data.icon;
+    const numbered = (index) => String(index + 1).padStart(2, "0");
+    function text(value) {
+      if (!value) return "";
+      if (typeof value === "string") return value;
+      return value[currentLang] || "";
+    }
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll(".lang button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.dataset.i18n;
+        node.textContent = data.ui[lang][key] || data.content[key]?.[lang] || "";
+      });
+      document.getElementById("addressText").textContent = data.address;
+      document.getElementById("airportText").textContent = `${data.property.airport.name} - ${data.property.airport.address} - ${data.property.airport.taxi_avg_price}`;
+      renderHighlights();
+      renderAmenities();
+      renderRules();
+      renderPractical();
+      renderEat();
+      renderVisit();
+      renderCheckout();
+    }
+    function renderHighlights() {
+      document.getElementById("highlights").innerHTML = data.highlights.map((item) => `
+        <article class="photo-card">
+          <img src="${item.image}" alt="${text(item.title)}">
+          <div><h3>${text(item.title)}</h3><p>${text(item.text)}</p></div>
+        </article>
+      `).join("");
+    }
+    function renderAmenities() {
+      document.getElementById("amenitiesGrid").innerHTML = data.amenities.map((key) => `
+        <div class="amenity">${icon}<span>${data.amenityLabels[key][currentLang] || key}</span></div>
+      `).join("");
+    }
+    function renderRules() {
+      document.getElementById("rulesList").innerHTML = data.rules.map((item, index) => `
+        <li class="rule"><b>${numbered(index)}</b><span>${text(item)}</span></li>
+      `).join("");
+    }
+    function renderPractical() {
+      const items = [
+        ["parking", data.extras.parking],
+        ["garbage", data.extras.garbage],
+        ["rentals", data.extras.rentals]
+      ].filter((entry) => text(entry[1]));
+      const emergency = data.extras.emergency_numbers.map((item) => {
+        const label = typeof item.label === "string" ? item.label : text(item.label);
+        return `${label}: ${item.number}`;
+      }).join(" · ");
+      document.getElementById("practicalList").innerHTML = items.map((entry) => `
+        <p><strong>${data.ui[currentLang][entry[0]]}</strong><br>${text(entry[1])}</p>
+      `).join("") + `<p><strong>${data.ui[currentLang].emergency}</strong><br><a href="tel:${data.extras.emergency_contact}">${data.extras.emergency_contact}</a><br>${emergency}</p>`;
+    }
+    function renderEat() {
+      document.getElementById("eatList").innerHTML = data.eat.map((item) => `
+        <article class="place">
+          <img src="${item.image}" alt="${item.name}">
+          <div><h3>${item.name}</h3><p class="muted">${item.price} · ${text(item.cuisine)}</p><p>${item.address}</p>${text(item.tip) ? `<p>${text(item.tip)}</p>` : ""}</div>
+        </article>
+      `).join("");
+    }
+    function renderVisit() {
+      document.getElementById("visitList").innerHTML = data.visit.map((item) => `
+        <article class="place">
+          <img src="${item.image}" alt="${text(item.name)}">
+          <div><h3>${text(item.name)}</h3><p>${text(item.note)}</p></div>
+        </article>
+      `).join("");
+    }
+    function renderCheckout() {
+      document.getElementById("checkoutList").innerHTML = data.checkout_checklist.map((item) => `
+        <li class="rule"><b>✓</b><span>${text(item)}</span></li>
+      `).join("");
+    }
+    document.querySelectorAll(".lang button").forEach((button) => button.addEventListener("click", () => setLang(button.dataset.lang)));
+    document.querySelectorAll(".copy").forEach((button) => button.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(button.dataset.copy);
+      button.textContent = data.ui[currentLang].copiedButton;
+    }));
+    const navLinks = [...document.querySelectorAll(".bottom-nav a")];
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${visible.target.id}`));
+    }, { threshold: [0.35, 0.65] });
+    ["home", "location", "wifi", "eatvisit", "contact"].forEach((id) => observer.observe(document.getElementById(id)));
+    setLang(currentLang);
+  </script>
+</body>
+</html>

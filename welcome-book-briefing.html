@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="base">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seu Welcome Book · OFS Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFBFB; --surface:#FFFFFF; --ink:#1F2933; --soft:#5C6670;
+    --line:#E3E6E8; --accent:#0E8A6B; --accent-ink:#FFFFFF;
+    --font-display:'Fraunces',serif; --radius:18px;
+  }
+  [data-theme="editorial"]{ --bg:#F7F1E6; --surface:#FDFBF6; --ink:#2C2C2A; --soft:#6E6A5E;
+    --line:#DDD6C6; --accent:#B3502D; --accent-ink:#FDF6EF; --font-display:'Fraunces',serif; }
+  [data-theme="clean"]{ --bg:#FFFFFF; --surface:#F6F7F8; --ink:#1A1A1A; --soft:#6B7176;
+    --line:#E6E8EA; --accent:#0E8A6B; --accent-ink:#FFFFFF; --font-display:'Inter',sans-serif; }
+  [data-theme="dark_lux"]{ --bg:#1D1C1A; --surface:#262522; --ink:#F1EFE8; --soft:#B4B2A9;
+    --line:#3A3833; --accent:#D6A256; --accent-ink:#1D1C1A; --font-display:'Fraunces',serif; }
+  [data-theme="custom"]{ --bg:#FAF8FC; --surface:#FFFFFF; --ink:#241F2E; --soft:#6A6378;
+    --line:#E4DFEC; --accent:#6C4ACB; --accent-ink:#FFFFFF; }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--ink);
+    line-height:1.6; padding-bottom:120px; transition:background .4s, color .4s;}
+  .wrap{max-width:780px; margin:0 auto; padding:0 16px;}
+  h1,h2,h3,.display{font-family:var(--font-display); font-weight:500;}
+
+  header.hero{padding:42px 0 10px; text-align:center;}
+  .eyebrow{font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--soft); font-weight:600;}
+  h1{font-size:clamp(28px,6vw,38px); line-height:1.14; margin:12px 0 8px;}
+  .hero p{color:var(--soft); font-size:15px; max-width:50ch; margin:0 auto;}
+
+  /* etapa 1 — estilos */
+  .styles{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:28px 0 8px;}
+  @media(max-width:560px){.styles{grid-template-columns:1fr;}}
+  .style-card{background:var(--surface); border:1.5px solid var(--line); border-radius:var(--radius);
+    padding:20px 16px 18px; cursor:pointer; transition:.2s; display:flex; flex-direction:column;
+    align-items:center; gap:14px; text-align:center;}
+  .style-card.sel{border-color:var(--accent); box-shadow:0 0 0 2px var(--accent);}
+  .style-card h3{font-size:17px;}
+  .style-card p{font-size:13.5px; color:var(--soft); margin-top:3px; max-width:34ch;}
+  .demo-link{display:inline-block; margin-top:9px; font-size:12.5px; font-weight:600;
+    color:var(--accent); text-decoration:underline; cursor:pointer;}
+
+  .mini{width:160px; height:320px; border-radius:22px; flex:none; overflow:hidden;
+    display:flex; flex-direction:column; border:1px solid rgba(127,127,127,.25);}
+  .m1{background:#F7F1E6;}
+  .m1 .photo{flex:1; background:#E9B96A; display:flex; flex-direction:column; justify-content:flex-end; padding:11px; text-align:left;}
+  .m1 .eb{font-size:8px; letter-spacing:.16em; color:#6B3E14; margin-bottom:3px;}
+  .m1 .tt{font-family:'Fraunces',serif; font-size:17px; line-height:1.12; color:#3A2408;}
+  .m1 .langs{display:flex; gap:5px; padding:9px;}
+  .m1 .langs span{flex:1; text-align:center; font-size:8px; padding:6px 0; border-radius:99px; border:1px solid #C9C2B2; color:#5A5648;}
+  .m1 .langs span:first-child{background:#2C2A26; color:#F1EFE8; border-color:#2C2A26;}
+
+  .m2{background:#fff;}
+  .m2 .bar{display:flex; justify-content:space-between; padding:10px 11px 5px; font-size:9px; font-weight:600; color:#1A1A1A;}
+  .m2 .photo{margin:5px 10px; height:118px; border-radius:11px; background:#BFD9F2;}
+  .m2 .tt{font-size:12px; font-weight:600; padding:8px 11px 0; line-height:1.25; text-align:left; color:#1A1A1A;}
+  .m2 .sub{font-size:8.5px; color:#6B7176; padding:2px 11px; text-align:left;}
+  .m2 .btn{margin:9px 11px; align-self:flex-start; background:#0E8A6B; color:#E2F4EE; font-size:8.5px; font-weight:600; padding:6px 12px; border-radius:99px;}
+  .m2 .nav{margin-top:auto; border-top:1px solid #E6E8EA; display:flex; justify-content:space-around; padding:8px 0; font-size:9px; color:#AEB4B8;}
+  .m2 .nav b{color:#0E8A6B; font-weight:400;}
+
+  .m3{background:#1D1C1A; text-align:center;}
+  .m3 .eb{font-size:8px; letter-spacing:.22em; color:#D6A256; padding-top:16px;}
+  .m3 .rule{width:18px; height:1px; background:#D6A256; margin:8px auto;}
+  .m3 .tt{font-family:'Fraunces',serif; font-size:16px; line-height:1.2; color:#F1EFE8; padding:14px 12px;}
+  .m3 .sub{font-size:7.5px; letter-spacing:.14em; color:#9B988E;}
+  .m3 .photo{margin:13px 11px 0; height:92px; background:#444138;}
+  .m3 .btn{display:inline-block; margin:13px 0; border:1px solid #D6A256; color:#D6A256; font-size:8px; letter-spacing:.12em; padding:7px 18px;}
+
+  .m4{background:#FAF8FC; border-style:dashed!important; align-items:center; justify-content:center; gap:10px;}
+  .m4 .q{font-family:'Fraunces',serif; font-size:40px; color:#B9AEDA; margin-top:auto;}
+  .m4 .sw{display:flex; gap:6px;}
+  .m4 .sw i{width:14px; height:14px; border-radius:50%; display:block;}
+  .m4 .lbl{font-size:9px; color:#6A6378; padding:0 16px 0; line-height:1.5; margin-bottom:auto;}
+  .skip{display:block; text-align:center; margin:14px 0 4px; font-size:13.5px; color:var(--soft);
+    text-decoration:underline; background:none; border:none; cursor:pointer; width:100%;}
+
+  /* barra fixa do estilo */
+  .stylebar{position:sticky; top:0; z-index:50; background:var(--bg); padding:10px 0; display:none;}
+  .stylebar .inner{display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background:var(--surface); border:1px solid var(--line); border-radius:99px; padding:8px 16px;}
+  .stylebar .lbl{font-size:13px; color:var(--soft);}
+  .stylebar .lbl b{color:var(--ink); font-weight:600;}
+  .stylebar button{background:none; border:none; color:var(--accent); font-weight:600; font-size:13px; cursor:pointer;}
+  .pbar{height:6px; background:var(--line); border-radius:99px; margin-top:8px; overflow:hidden;}
+  .pfill{height:100%; width:0%; background:var(--accent); transition:width .3s;}
+  .plabel{font-size:11.5px; color:var(--soft); margin-top:4px; font-weight:600;}
+
+  /* formulário */
+  #formzone{display:none;}
+  section.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 18px; margin:18px 0;}
+  .sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+  .sec-num{font-family:var(--font-display); font-size:20px; color:var(--accent); min-width:34px;}
+  .sec-head h2{font-size:19px;}
+  .sec-hint{font-size:13px; color:var(--soft); margin-bottom:14px;}
+  label{display:block; font-size:13.5px; font-weight:600; margin:14px 0 5px;}
+  label .req{color:var(--accent); font-weight:700;}
+  input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+    width:100%; padding:12px 13px; border:1.5px solid var(--line); border-radius:12px;
+    font:inherit; font-size:15px; color:var(--ink); background:var(--bg);}
+  textarea{min-height:84px; resize:vertical;}
+  input:focus,textarea:focus,select:focus{outline:none; border-color:var(--accent);}
+  input.missing,textarea.missing{border-color:#E24B4A;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:0 12px;}
+  @media(max-width:430px){.grid2{grid-template-columns:1fr;}}
+  .chips{display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; margin-top:8px;}
+  .chip{position:relative;}
+  .chip input{position:absolute; opacity:0; inset:0; cursor:pointer;}
+  .chip span{display:flex; align-items:center; justify-content:center; text-align:center; min-height:44px;
+    padding:8px 10px; border:1.5px solid var(--line); border-radius:12px; font-size:13.5px; background:var(--bg); transition:.15s;}
+  .chip input:checked + span{background:var(--accent); border-color:var(--accent); color:var(--accent-ink); font-weight:600;}
+  .files{border:1.5px dashed var(--accent); border-radius:14px; padding:14px; font-size:14px; margin-top:10px;}
+  .files ul{margin:8px 0 0 18px;} .files li{margin:3px 0;}
+
+  .footer-bar{position:fixed; bottom:0; left:0; right:0; background:var(--surface); border-top:1px solid var(--line);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom)); z-index:60; display:none;}
+  .footer-bar .wrap{display:flex;}
+  button.btn{font:inherit; font-weight:700; border:none; border-radius:14px; padding:14px 16px; cursor:pointer; font-size:15px;}
+  .btn-main{flex:1; background:var(--accent); color:var(--accent-ink);}
+
+  #result{display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:100; padding:16px; overflow:auto;}
+  #result .panel{max-width:680px; margin:24px auto; background:var(--surface); border-radius:20px; padding:22px 18px;}
+  #result h3{font-size:21px; margin-bottom:6px;}
+  #result p{font-size:14px; color:var(--soft); margin-bottom:12px;}
+  #output{width:100%; min-height:180px; max-height:36vh; font-family:ui-monospace,monospace; font-size:12.5px;
+    border:1.5px solid var(--line); border-radius:12px; padding:12px; background:var(--bg); color:var(--ink); white-space:pre; overflow:auto;}
+  .actions{display:flex; flex-direction:column; gap:10px; margin-top:14px;}
+  .btn-wa{background:#25D366; color:#fff;}
+  .btn-copy{background:var(--ink); color:var(--bg);}
+  .btn-dl{background:var(--bg); color:var(--ink); border:1.5px solid var(--line)!important;}
+  .btn-close{background:none; color:var(--soft); font-weight:600; padding:8px;}
+  .toast{position:fixed; bottom:90px; left:50%; transform:translateX(-50%); background:var(--ink); color:var(--bg);
+    padding:10px 18px; border-radius:99px; font-size:14px; font-weight:600; opacity:0; transition:.3s; pointer-events:none; z-index:200;}
+  .toast.show{opacity:1;}
+</style>
+</head>
+<body>
+
+<header class="hero wrap" id="step1">
+  <div class="eyebrow">OFS Digital · Welcome Book</div>
+  <h1>Vamos criar o seu Welcome Book</h1>
+  <p><b>Etapa 1 de 2:</b> escolha a personalidade visual do seu guia. O conteúdo é completo em qualquer opção — o que muda é o estilo. Toque numa opção e veja a página se transformar.</p>
+
+  <div class="styles">
+    <button class="style-card" data-style="editorial" type="button">
+      <span class="mini m1">
+        <span class="photo"><span class="eb">JERICOACOARA</span><span class="tt">Bem-vindo à Vento Leste</span></span>
+        <span class="langs"><span>PT</span><span>EN</span><span>ES</span></span>
+      </span>
+      <span><h3>01 · Editorial Boutique</h3><p>Fotos em tela cheia, serifa elegante, tons de areia e terracota. Pousadas e Airbnbs de charme.</p><span class="demo-link" data-url="/exemplos/editorial">Ver exemplo ao vivo ↗</span></span>
+    </button>
+    <button class="style-card" data-style="clean" type="button">
+      <span class="mini m2">
+        <span class="bar"><span>Vento Leste</span><span>≡</span></span>
+        <span class="photo"></span>
+        <span class="tt">Bem-vindo à sua estadia</span>
+        <span class="sub">Tudo o que você precisa, em um toque.</span>
+        <span class="btn">Começar →</span>
+        <span class="nav"><b>⌂</b><span>◎</span><span>≋</span><span>✉</span></span>
+      </span>
+      <span><h3>02 · Clean Moderno</h3><p>Branco, direto, sensação de aplicativo. Apartamentos urbanos, flats e hostels.</p><span class="demo-link" data-url="/exemplos/clean">Ver exemplo ao vivo ↗</span></span>
+    </button>
+    <button class="style-card" data-style="dark_lux" type="button">
+      <span class="mini m3">
+        <span class="eb">VENTO LESTE</span>
+        <span class="rule"></span>
+        <span class="tt">Seja muito<br>bem-vindo</span>
+        <span class="sub">JERICOACOARA · BRASIL</span>
+        <span class="photo"></span>
+        <span><span class="btn">EXPLORAR</span></span>
+      </span>
+      <span><h3>03 · Dark Luxo</h3><p>Fundo escuro, serifa clássica, detalhes dourados. Hotéis premium e alto padrão.</p><span class="demo-link" data-url="/exemplos/dark">Ver exemplo ao vivo ↗</span></span>
+    </button>
+    <button class="style-card" data-style="custom" type="button">
+      <span class="mini m4">
+        <span class="q">?</span>
+        <span class="sw"><i style="background:#E9B96A"></i><i style="background:#0E8A6B"></i><i style="background:#1D1C1A"></i><i style="background:#D85A30"></i></span>
+        <span class="lbl">Seu estilo, suas referências, sua identidade</span>
+      </span>
+      <span><h3>04 · Personalizado</h3><p>Você envia referências (Pinterest, Instagram, marcas que admira) e criamos um tema exclusivo.</p></span>
+    </button>
+  </div>
+  <button class="skip" type="button" onclick="chooseStyle('undecided')">Ainda não decidi — quero ajuda da OFS para escolher</button>
+</header>
+
+<div class="stylebar" id="stylebar"><div class="wrap">
+  <div class="inner">
+    <span class="lbl">Estilo: <b id="stylename">—</b></span>
+    <button type="button" onclick="backToStyles()">trocar</button>
+  </div>
+  <div class="pbar"><div class="pfill" id="pfill"></div></div>
+  <div class="plabel" id="plabel"></div>
+</div></div>
+
+<main class="wrap" id="formzone">
+  <header class="hero" style="padding:18px 0 0; text-align:left;">
+    <h1 style="font-size:24px;">Etapa 2: conte tudo sobre sua hospedagem</h1>
+    <p style="margin:6px 0 0; max-width:none;">Suas respostas viram o conteúdo do guia, em até 3 idiomas. Campos com ★ são obrigatórios. Leva cerca de 15 minutos.</p>
+  </header>
+  <div id="form"></div>
+</main>
+
+<div class="footer-bar" id="footerbar"><div class="wrap">
+  <button class="btn btn-main" onclick="generate()">Concluir e enviar respostas →</button>
+</div></div>
+
+<div id="result">
+  <div class="panel">
+    <h3>Tudo pronto!</h3>
+    <p>Toque em <b>Enviar no WhatsApp</b>: suas respostas (com o estilo escolhido) serão copiadas — é só <b>colar</b> na conversa e enviar. Depois, mande as fotos na mesma conversa.</p>
+    <textarea id="output" readonly></textarea>
+    <div class="actions">
+      <button class="btn btn-wa" onclick="sendWA()">📲 Enviar no WhatsApp da OFS</button>
+      <button class="btn btn-copy" onclick="copyOut()">Copiar respostas</button>
+      <button class="btn btn-dl" onclick="downloadTxt()">Baixar arquivo .txt</button>
+      <button class="btn btn-close" onclick="document.getElementById('result').style.display='none'">Voltar e revisar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Copiado!</div>
+
+<script>
+const WA_NUMBER = "5585984815378";
+const STYLES = {
+  editorial: "01 · Editorial Boutique",
+  clean: "02 · Clean Moderno",
+  dark_lux: "03 · Dark Luxo",
+  custom: "04 · Personalizado",
+  undecided: "A definir com a OFS"
+};
+let chosenStyle = null;
+
+// ---------- definição do formulário ----------
+const CUSTOM_SEC = {n:0, t:"Seu estilo personalizado", custom:true,
+  hint:"Você escolheu o tema personalizado. Nos mostre o que você gosta — quanto mais referências, mais certeiro o resultado.",
+  fields:[
+    {k:"Links de referência", type:"area", req:1, ph:"Cole links de Pinterest, Instagram, sites de hotéis ou marcas que você admira (um por linha)"},
+    {k:"Descreva o clima que você quer", type:"area", req:1, ph:"ex.: rústico e acolhedor / minimalista e sofisticado / tropical e colorido..."},
+    {k:"Cores que ama / cores que odeia", type:"text"},
+    {k:"Tem manual de marca ou identidade visual pronta?", type:"select", opts:["Sim — vou enviar no WhatsApp","Não tenho"]},
+  ]};
+
+const F = [
+ {n:1, t:"Identidade da marca", hint:"Como sua hospedagem se apresenta.", fields:[
+   {k:"Nome da hospedagem", type:"text", req:1},
+   {k:"Tipo", type:"select", req:1, opts:["Airbnb / Apartamento","Pousada","Hotel","Hostel","Flat / Condo-hotel","Outro"]},
+   {k:"Slogan ou frase de boas-vindas", type:"text"},
+   {k:"Quantas unidades este Welcome Book cobre?", type:"text", ph:"ex.: 1 apartamento / todos os quartos"},
+ ]},
+ {n:2, t:"Check-in & Check-out", fields:[
+   {k:"Horário de check-in", type:"text", req:1, ph:"ex.: 15:00", half:1},
+   {k:"Horário de check-out", type:"text", req:1, ph:"ex.: 11:00", half:1},
+   {k:"Tem recepção? Qual horário?", type:"text", ph:"ex.: 24/7 ou não tem"},
+   {k:"Guarda-volumes para chegada antecipada?", type:"select", opts:["Sim","Não"]},
+   {k:"Passo a passo de acesso ao imóvel", type:"area", req:1, ph:"Descreva desde a chegada: portaria, interfone, documentos, chave ou código, como recebe o código..."},
+   {k:"Procedimento para veículos", type:"area", ph:"Informar placa? Garagem rotativa ou vaga fixa? Onde fica?"},
+   {k:"O que fazer no check-out", type:"area", ph:"Devolver chave? Notificar saída? Passar na recepção?"},
+ ]},
+ {n:3, t:"Localização & Transporte", fields:[
+   {k:"Endereço completo com CEP", type:"area", req:1},
+   {k:"Bairro / ponto de referência", type:"text"},
+   {k:"Link do Google Maps", type:"text", ph:"cole o link de compartilhamento"},
+   {k:"Aeroporto mais próximo (nome)", type:"text", req:1},
+   {k:"Preço médio de táxi/Uber do aeroporto", type:"text", ph:"ex.: R$ 80,00"},
+   {k:"Outras formas de chegar / dica de estacionamento", type:"area"},
+ ]},
+ {n:4, t:"Wi-Fi", hint:"A página mais consultada por qualquer hóspede.", fields:[
+   {k:"Nome da rede", type:"text", req:1, half:1},
+   {k:"Senha", type:"text", req:1, half:1},
+   {k:"A rede é a mesma em todas as unidades?", type:"text", ph:"Sim / Não — detalhe se variar"},
+ ]},
+ {n:5, t:"Comodidades", hint:"Marque tudo que a acomodação oferece.", fields:[
+   {k:"Comodidades", type:"chips", opts:["Cama de casal","Cama de solteiro","Sofá-cama","TV / Smart TV","Wi-Fi grátis","Ar-condicionado","Ventilador","Máquina de lavar","Ferro de passar","Secador de cabelo","Geladeira","Forno e fogão","Micro-ondas","Cafeteira","Airfryer","Piscina","Academia","Jacuzzi","Sauna","Área gourmet","Churrasqueira","Restaurante","Mesa de jantar","Lavanderia","Coworking","Espaço kids","Berço"]},
+   {k:"Outras comodidades ou observações de uso", type:"area", ph:"ex.: academia funciona 24h; café da manhã incluso..."},
+ ]},
+ {n:6, t:"Regras da casa", fields:[
+   {k:"Fumar", type:"text", ph:"ex.: proibido em todas as dependências"},
+   {k:"Horário de silêncio", type:"text", ph:"ex.: das 22h às 8h"},
+   {k:"Visitantes", type:"text", ph:"proibidos / permitidos com regras..."},
+   {k:"Festas e eventos", type:"text", ph:"proibidos / permitidos com regras..."},
+   {k:"Animais de estimação", type:"text", ph:"proibidos / permitidos com regras..."},
+   {k:"Regras do condomínio que o hóspede precisa saber", type:"area"},
+   {k:"Como comunicar problemas ou danos", type:"text", ph:"ex.: WhatsApp do anfitrião imediatamente"},
+ ]},
+ {n:7, t:"Informações práticas", fields:[
+   {k:"Onde e como descartar o lixo", type:"area", req:1},
+   {k:"Estacionamento", type:"text", ph:"gratuito? rotativo? coberto?"},
+   {k:"Itens para alugar ou emprestar", type:"text", ph:"bicicleta, caiaque, prancha, berço..."},
+   {k:"Telefone de emergência da hospedagem", type:"tel", req:1, ph:"nome + WhatsApp para urgências"},
+   {k:"Hospital, farmácia ou mercado próximos", type:"area", ph:"opcional, mas recomendado"},
+ ]},
+ {n:8, t:"Onde comer", hint:"De 3 a 6 lugares. Para cada um: nome · tipo de comida · preço ($, $$ ou $$$) · endereço · por que recomenda.", fields:[
+   {k:"Recomendação 1", type:"area", req:1, ph:"Ex.: Mangaba Beira-Mar · frutos do mar · $$$ · Av. Beira Mar, 480 · melhor pôr do sol da orla"},
+   {k:"Recomendação 2", type:"area", req:1},
+   {k:"Recomendação 3", type:"area", req:1},
+   {k:"Recomendação 4", type:"area"},
+   {k:"Recomendação 5", type:"area"},
+   {k:"Recomendação 6", type:"area"},
+ ]},
+ {n:9, t:"O que visitar", hint:"De 3 a 5 atrações. Nome · o que é · distância · dica sua.", fields:[
+   {k:"Atração 1", type:"area", req:1},
+   {k:"Atração 2", type:"area", req:1},
+   {k:"Atração 3", type:"area", req:1},
+   {k:"Atração 4", type:"area"},
+   {k:"Atração 5", type:"area"},
+   {k:"Dica para famílias com crianças", type:"area"},
+   {k:"Parceiro local de passeios (nome + contato)", type:"text"},
+ ]},
+ {n:10, t:"Checklist de saída", hint:"O padrão inclui: conferir pertences, desligar aparelhos, esvaziar lixo, fechar portas e janelas, toalhas no varal, deixar arrumado e notificar a saída.", fields:[
+   {k:"Quer mudar algo no checklist padrão?", type:"area", ph:"adicionar, remover ou alterar itens"},
+   {k:"O que fazer com roupas de cama usadas", type:"text"},
+   {k:"O que fazer com a chave ou cartão", type:"text"},
+ ]},
+ {n:11, t:"Contato & Anfitrião", fields:[
+   {k:"Nome do anfitrião (como deve aparecer)", type:"text", req:1},
+   {k:"Mensagem pessoal de boas-vindas", type:"area", req:1, ph:"2 a 4 frases, no seu tom — nós lapidamos o texto"},
+   {k:"WhatsApp de atendimento", type:"tel", req:1, half:1},
+   {k:"E-mail de reservas", type:"email", half:1},
+   {k:"Instagram", type:"text", ph:"@", half:1},
+   {k:"Facebook ou outras redes", type:"text", half:1},
+   {k:"Selo de plataforma", type:"select", opts:["Nenhum","Superhost (Airbnb)","Anfitrião Preferido (Booking)","Outro"]},
+   {k:"Link de avaliação (Airbnb, Booking ou Google)", type:"text"},
+ ]},
+ {n:12, t:"Idiomas & Entrega", fields:[
+   {k:"Idiomas do Welcome Book", type:"chips", req:1, opts:["Português","Inglês","Espanhol","Outro"]},
+   {k:"Perfil dos seus hóspedes", type:"text", ph:"nacionais, estrangeiros, famílias, executivos..."},
+   {k:"Como vai entregar ao hóspede", type:"chips", opts:["WhatsApp","E-mail","QR Code impresso","Outro"]},
+ ]},
+];
+
+// ---------- etapa 1: escolha de estilo ----------
+document.querySelectorAll('.style-card').forEach(c=>{
+  c.addEventListener('click', ()=> chooseStyle(c.dataset.style));
+});
+// links "ver exemplo ao vivo" abrem o demo sem selecionar o estilo
+document.querySelectorAll('.demo-link').forEach(l=>{
+  l.addEventListener('click', e=>{ e.stopPropagation(); window.open(l.dataset.url, '_blank'); });
+});
+function chooseStyle(key){
+  chosenStyle = key;
+  document.documentElement.dataset.theme = (key==='undecided') ? 'base' : key;
+  document.querySelectorAll('.style-card').forEach(c=> c.classList.toggle('sel', c.dataset.style===key));
+  document.getElementById('stylename').textContent = STYLES[key];
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('stylebar').style.display = 'block';
+  document.getElementById('formzone').style.display = 'block';
+  document.getElementById('footerbar').style.display = 'block';
+  renderForm();
+  window.scrollTo({top:0});
+}
+function backToStyles(){
+  document.getElementById('step1').style.display = 'block';
+  document.getElementById('stylebar').style.display = 'none';
+  document.getElementById('formzone').style.display = 'none';
+  document.getElementById('footerbar').style.display = 'none';
+  window.scrollTo({top:0});
+}
+
+// ---------- etapa 2: render do formulário (preserva valores ao trocar de tema) ----------
+let rendered = false;
+function renderForm(){
+  const main = document.getElementById('form');
+  const customSec = document.getElementById('sec_custom');
+  if(rendered){
+    if(customSec) customSec.style.display = (chosenStyle==='custom') ? 'block' : 'none';
+    updateProgress();
+    return;
+  }
+  rendered = true;
+
+  const cs = buildSection(CUSTOM_SEC);
+  cs.id = 'sec_custom';
+  cs.style.display = (chosenStyle==='custom') ? 'block' : 'none';
+  main.appendChild(cs);
+
+  F.forEach(sec=> main.appendChild(buildSection(sec)));
+
+  const filesSec = document.createElement('section');
+  filesSec.className='card';
+  filesSec.innerHTML = `
+    <div class="sec-head"><span class="sec-num">13</span><h2>Fotos & Logo</h2></div>
+    <div class="sec-hint">Os arquivos você envia direto na nossa conversa de WhatsApp, logo depois das respostas.</div>
+    <div class="files"><b>📁 Separe para enviar:</b>
+      <ul>
+        <li><b>Logo</b> em alta resolução (PNG fundo transparente, se tiver)</li>
+        <li><b>Foto da fachada</b> / entrada</li>
+        <li><b>3 a 6 fotos dos ambientes</b> (quarto, cozinha, sala, banheiro, varanda)</li>
+        <li>Fotos das <b>áreas comuns</b> (piscina, academia, área gourmet)</li>
+        <li><b>Foto do anfitrião</b> (opcional — humaniza muito o guia)</li>
+        <li>Fotos dos <b>restaurantes/atrações</b> recomendados (se tiver)</li>
+      </ul>
+      <p style="margin-top:8px">Dica: envie como <b>documento</b> no WhatsApp para não perder qualidade.</p>
+    </div>`;
+  main.appendChild(filesSec);
+  updateProgress();
+}
+
+function buildSection(sec){
+  const s = document.createElement('section'); s.className='card';
+  let h = `<div class="sec-head"><span class="sec-num">${sec.custom?'★':String(sec.n).padStart(2,'0')}</span><h2>${sec.t}</h2></div>`;
+  if(sec.hint) h += `<div class="sec-hint">${sec.hint}</div>`;
+  let inner='', halfBuf=[];
+  const flush=()=>{ if(halfBuf.length){ inner+=`<div class="grid2">${halfBuf.join('')}</div>`; halfBuf=[]; } };
+  sec.fields.forEach((f,i)=>{
+    const id = `f_${sec.n}_${i}`;
+    const lab = `<label for="${id}">${f.k}${f.req?' <span class="req">★</span>':''}</label>`;
+    let ctrl='';
+    if(f.type==='area') ctrl = `<textarea id="${id}" data-k="${f.k}" data-req="${f.req?1:0}" data-sec="${sec.n}" placeholder="${f.ph||''}"></textarea>`;
+    else if(f.type==='select') ctrl = `<select id="${id}" data-k="${f.k}" data-req="${f.req?1:0}" data-sec="${sec.n}"><option value="">Selecionar...</option>${f.opts.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    else if(f.type==='chips') ctrl = `<div class="chips" data-k="${f.k}" data-req="${f.req?1:0}" data-sec="${sec.n}" id="${id}">` + f.opts.map(o=>`<label class="chip"><input type="checkbox" value="${o}"><span>${o}</span></label>`).join('') + `</div>`;
+    else ctrl = `<input type="${f.type==='tel'?'tel':f.type==='email'?'email':'text'}" id="${id}" data-k="${f.k}" data-req="${f.req?1:0}" data-sec="${sec.n}" placeholder="${f.ph||''}">`;
+    const block = lab + ctrl;
+    if(f.half){ halfBuf.push(`<div>${block}</div>`); if(halfBuf.length===2) flush(); }
+    else { flush(); inner += block; }
+  });
+  flush();
+  s.innerHTML = h + inner;
+  return s;
+}
+
+// ---------- progresso ----------
+function activeReqEls(){
+  return [...document.querySelectorAll('[data-req="1"]')].filter(el=>{
+    if(el.dataset.sec==='0' && chosenStyle!=='custom') return false;
+    return true;
+  });
+}
+function reqState(){
+  const els = activeReqEls();
+  let done = 0;
+  els.forEach(el=>{
+    if(el.classList.contains('chips')){ if(el.querySelector('input:checked')) done++; }
+    else if(el.value.trim()) done++;
+  });
+  return {done, total:els.length, els};
+}
+function updateProgress(){
+  const {done,total} = reqState();
+  document.getElementById('pfill').style.width = (total? done/total*100:0)+'%';
+  document.getElementById('plabel').textContent = `${done} de ${total} campos obrigatórios preenchidos`;
+}
+document.addEventListener('input', updateProgress);
+document.addEventListener('change', updateProgress);
+
+// ---------- geração ----------
+let finalText = '';
+function generate(){
+  const {els} = reqState();
+  let firstMissing = null;
+  els.forEach(el=>{
+    const empty = el.classList.contains('chips') ? !el.querySelector('input:checked') : !el.value.trim();
+    if(!el.classList.contains('chips')) el.classList.toggle('missing', empty);
+    if(empty && !firstMissing) firstMissing = el;
+  });
+  if(firstMissing){
+    firstMissing.scrollIntoView({behavior:'smooth', block:'center'});
+    showToast('Faltam campos obrigatórios ★');
+    return;
+  }
+  const lines = ['BRIEFING WELCOME BOOK — OFS DIGITAL',
+                 'Data: '+new Date().toLocaleDateString('pt-BR'),
+                 'ESTILO ESCOLHIDO: '+STYLES[chosenStyle], ''];
+  const allSecs = (chosenStyle==='custom') ? [CUSTOM_SEC, ...F] : F;
+  allSecs.forEach(sec=>{
+    const vals = [];
+    sec.fields.forEach((f,i)=>{
+      const el = document.getElementById(`f_${sec.n}_${i}`);
+      if(!el) return;
+      let v = '';
+      if(f.type==='chips') v = [...el.querySelectorAll('input:checked')].map(c=>c.value).join(', ');
+      else v = el.value.trim();
+      if(v) vals.push(`${f.k}: ${v}`);
+    });
+    if(vals.length){
+      const tag = sec.custom ? '★ ESTILO PERSONALIZADO — REFERÊNCIAS' : `${String(sec.n).padStart(2,'0')}. ${sec.t.toUpperCase()}`;
+      lines.push(`=== ${tag} ===`); lines.push(...vals, '');
+    }
+  });
+  lines.push('=== 13. ARQUIVOS ===', 'Enviarei as fotos e o logo nesta conversa.');
+  finalText = lines.join('\n');
+  document.getElementById('output').value = finalText;
+  document.getElementById('result').style.display = 'block';
+}
+
+function copyOut(){
+  if(navigator.clipboard) navigator.clipboard.writeText(finalText).then(()=>showToast('Respostas copiadas!'));
+  else { const o=document.getElementById('output'); o.select(); document.execCommand('copy'); showToast('Respostas copiadas!'); }
+}
+function sendWA(){
+  copyOut();
+  const intro = encodeURIComponent('Olá, OFS! Preenchi o briefing do Welcome Book (estilo: '+STYLES[chosenStyle]+'). Vou colar as respostas aqui: ');
+  setTimeout(()=>{ window.open(`https://wa.me/${WA_NUMBER}?text=${intro}`, '_blank'); }, 400);
+}
+function downloadTxt(){
+  const blob = new Blob([finalText], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'briefing-welcome-book.txt';
+  a.click(); URL.revokeObjectURL(a.href);
+}
+function showToast(msg){
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+</script>
+</body>
+</html>
