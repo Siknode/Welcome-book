@@ -1,7 +1,6 @@
 # =============================================================
-# WELCOME BOOK — EXEMPLO PREENCHIDO
-# Hospedagem fictícia: Pousada Vento Leste (Jericoacoara, CE)
-# Fixture de referência do gerador OFS Digital
+# WELCOME BOOK — NOSSA CASA ILHA GRANDE
+# Hospedagem: Vila do Abraão, Ilha Grande, Angra dos Reis - RJ
 # =============================================================
 
 meta:
@@ -10,246 +9,257 @@ meta:
   languages: [pt, en, es]
 
 brand:
-  name: "Pousada Vento Leste"
+  name: "Nossa casa Ilha Grande"
   logo: "assets/logo.png"
-  theme: "editorial"            # editorial | clean | dark_lux | custom
-  accent_override: ""           # vazio = usa o terracota padrão do tema
+  theme: "clean"                 # editorial | clean | dark_lux | custom
+  accent_override: ""            # vazio = usa o verde do tema clean
   badge: "Superhost"
 
 property:
-  type: "pousada"
+  type: "casa"
   address:
-    street: "Rua das Dunas, 215"
-    neighborhood: "Centro"
-    city: "Jericoacoara"
-    state: "CE"
-    zip: "62598-000"
-  maps_url: "https://maps.google.com/?q=Rua+das+Dunas,+215,+Jericoacoara"
+    street: "Vila do Abraão, s/n (VM6Q+8P)"
+    neighborhood: "Abraão"
+    city: "Angra dos Reis"
+    state: "RJ"
+    zip: "23968-000"
+  maps_url: "https://maps.app.goo.gl/f2LmcPezPStQ2YCK9"
   airport:
-    name: "Aeroporto Regional de Jericoacoara (JJD)"
-    address: "Rod. CE-085, s/n — Cruz, CE"
-    taxi_avg_price: "R$ 120,00 (transfer 4x4 compartilhado: R$ 60,00 por pessoa)"
+    name: "Aeroporto Internacional do Rio de Janeiro (Galeão - GIG)"
+    address: "Av. Vinte de Janeiro, s/n — Rio de Janeiro, RJ"
+    taxi_avg_price: "R$ 350,00 (táxi/transfer até Conceição de Jacareí + R$ 50,00 flexboat)"
 
 checkin:
   time: "14:00"
-  checkout_time: "12:00"
-  reception_hours: "07:00 às 22:00"
+  checkout_time: "11:00"
+  reception_hours: "08:00 às 21:00"
   luggage_storage: true
   access_steps:
     pt: >-
-      Jericoacoara não tem ruas asfaltadas: o acesso é feito por veículos 4x4
-      ou buggy. Ao chegar à vila, siga até a Rua das Dunas e procure o portão
-      de madeira com a placa da pousada. Apresente-se na recepção com o
-      documento de cada hóspede para fazer o check-in.
+      Não há carros particulares na ilha. O acesso é feito por barco. Ao desembarcar
+      no píer turístico da Vila do Abraão, siga em direção à praça da igreja. A casa
+      fica a poucos minutos de caminhada. Se precisar de ajuda com a bagagem, você
+      pode contratar um dos carregadores locais com seus carrinhos de mão no cais.
     en: >-
-      Jericoacoara has no paved streets: access is by 4x4 vehicles or buggy.
-      When you arrive in the village, head to Rua das Dunas and look for the
-      wooden gate with the pousada sign. Present each guest's ID at the
-      reception desk to check in.
+      There are no private cars on the island. Access is by boat. Upon disembarking
+      at the tourist pier in Vila do Abraão, walk towards the church square. The
+      house is just a few minutes' walk away. If you need help with luggage, you
+      can hire one of the local luggage handlers with their handcarts at the pier.
     es: >-
-      Jericoacoara no tiene calles asfaltadas: el acceso es en vehículos 4x4
-      o buggy. Al llegar al pueblo, diríjase a la Rua das Dunas y busque el
-      portón de madera con el letrero de la posada. Presente el documento de
-      cada huésped en la recepción para hacer el check-in.
+      No hay coches particulares en la isla. El acceso es en barco. Al desembarcar
+      en el muelle turístico de Vila do Abraão, camine hacia la plaza de la iglesia.
+      La casa está a pocos minutos a pie. Si necesita ayuda con el equipaje, puede
+      contratar a uno de los cargadores locales con sus carretillas en el muelle.
   door_code_info:
-    pt: "As chaves do chalé são entregues na recepção no momento do check-in."
-    en: "Your chalet keys are handed over at reception upon check-in."
-    es: "Las llaves del chalé se entregan en la recepción al hacer el check-in."
+    pt: "A Mari ou alguém da equipe estará no local para recebê-lo e entregar as chaves."
+    en: "Mari or someone from the staff will be on site to welcome you and hand over the keys."
+    es: "Mari o alguien del equipo estará en el lugar para darle la bienvenida y entregarle las llaves."
   vehicle_info:
     pt: >-
-      Carros particulares não circulam dentro da vila. Se vier dirigindo,
-      estacione no estacionamento credenciado na entrada de Jeri (a partir de
-      R$ 30,00/dia) e avise a recepção para organizarmos o traslado da bagagem.
+      Carros particulares não entram em Ilha Grande. Se vier dirigindo, estacione
+      em um dos estacionamentos seguros em Conceição de Jacareí ou Angra dos Reis
+      (média de R$ 30,00 a R$ 50,00 por dia) antes de embarcar no flexboat.
     en: >-
-      Private cars are not allowed inside the village. If driving, park at the
-      authorized lot at the entrance of Jeri (from R$ 30.00/day) and let
-      reception know so we can arrange luggage transfer.
+      Private cars are not allowed on Ilha Grande. If driving, park at one of the
+      secure parking lots in Conceição de Jacareí or Angra dos Reis (average R$ 30.00
+      to R$ 50.00 per day) before boarding the flexboat.
     es: >-
-      Los coches particulares no circulan dentro del pueblo. Si viene
-      conduciendo, estacione en el aparcamiento autorizado en la entrada de
-      Jeri (desde R$ 30,00/día) y avise a la recepción para organizar el
-      traslado del equipaje.
+      Los coches particulares no están permitidos en Ilha Grande. Si viene conduciendo,
+      estacione en uno de los aparcamientos seguros en Conceição de Jacareí o Angra
+      dos Reis (promedio de R$ 30,00 a R$ 50,00 por día) antes de embarcar en el flexboat.
 
 wifi:
-  network: "VentoLeste_Guest"
-  password: "brisadomar2026"
+  network: "NossaCasa_IlhaGrande"
+  password: "bemvindoailha"
 
 amenities:
   - double_bed
   - single_bed
-  - pool
   - tv
   - wifi
   - dining_table
   - fridge
+  - microwave
   - coffee_maker
+  - stove_oven
   - gourmet_area
-  - restaurant
+
 amenities_note:
   pt: >-
-    Café da manhã incluso, servido das 7h às 10h no restaurante. A energia da
-    vila pode oscilar — use os aparelhos elétricos com moderação. Itens podem
-    variar entre os chalés.
+    A voltagem da casa é 110V. Como estamos em uma ilha preservada no meio da Mata
+    Atlântica, por favor, use a água e a energia de forma consciente e evite deixar
+    o ar-condicionado ligado quando estiver fora.
   en: >-
-    Breakfast is included, served from 7 to 10 am at the restaurant. The
-    village power supply can fluctuate — please use electrical appliances in
-    moderation. Features may vary between chalets.
+    The house voltage is 110V. As we are on a preserved island in the middle of the
+    Atlantic Forest, please use water and energy consciously and avoid leaving the
+    air conditioning on when you are out.
   es: >-
-    Desayuno incluido, servido de 7 a 10 h en el restaurante. La energía del
-    pueblo puede oscilar — use los aparatos eléctricos con moderación. Los
-    equipamientos pueden variar entre los chalés.
+    El voltaje de la casa es de 110V. Como estamos en una isla preservada en medio
+    de la Mata Atlántica, por favor, use el agua y la energía de forma consciente
+    y evite dejar el aire acondicionado encendido cuando esté fuera.
 
 rules:
-  - pt: "Não é permitido fumar dentro dos chalés. Há cinzeiros nas varandas e áreas abertas."
-    en: "Smoking is not allowed inside the chalets. Ashtrays are available on the balconies and open areas."
-    es: "No se permite fumar dentro de los chalés. Hay ceniceros en las terrazas y áreas abiertas."
-  - pt: "Trate o espaço com cuidado, deixando-o como o recebeu, para que o próximo hóspede tenha a mesma recepção."
-    en: "Treat the space with care, leaving it as you found it, so the next guest enjoys the same welcome."
-    es: "Trate el espacio con cuidado, dejándolo tal como lo recibió, para que el próximo huésped tenga la misma bienvenida."
-  - pt: "Silêncio entre 22h e 7h — os chalés são próximos uns dos outros."
-    en: "Quiet hours from 10 pm to 7 am — the chalets are close to one another."
-    es: "Silencio entre las 22h y las 7h — los chalés están cerca unos de otros."
-  - pt: "Somente hóspedes registrados nas áreas internas. Festas não são permitidas."
-    en: "Registered guests only in the indoor areas. Parties are not allowed."
-    es: "Solo huéspedes registrados en las áreas internas. No se permiten fiestas."
-  - pt: "Areia fica do lado de fora: use os lava-pés na entrada de cada chalé."
-    en: "Sand stays outside: please use the foot-washing stations at each chalet entrance."
-    es: "La arena se queda afuera: use los lavapiés en la entrada de cada chalé."
-  - pt: "Comunique imediatamente à recepção qualquer problema ou dano durante a estadia."
-    en: "Report any problem or damage to reception immediately during your stay."
-    es: "Informe de inmediato a la recepción cualquier problema o daño durante su estancia."
+  - pt: "Não é permitido fumar no interior da casa. Use as áreas externas abertas."
+    en: "Smoking is not allowed inside the house. Please use the open outdoor areas."
+    es: "No se permite fumar dentro de la casa. Por favor, use as áreas exteriores abiertas."
+  - pt: "Silêncio das 22h às 8h — respeite a tranquilidade dos vizinhos e da vila."
+    en: "Quiet hours from 10 pm to 8 am — please respect the peace of the neighbors and the village."
+    es: "Horario de silencio de 22:00 a 08:00 — respete la tranquilidad de los vecinos y del pueblo."
+  - pt: "Lave os pés de areia no chuveiro externo antes de entrar na casa."
+    en: "Rinse sand off your feet at the outdoor shower before entering the house."
+    es: "Lávese los pies con arena en la ducha exterior antes de entrar a la casa."
+  - pt: "Não é permitida a entrada de pessoas não registradas na reserva."
+    en: "Unregistered guests are not allowed inside the property."
+    es: "No se permite la entrada de personas no registradas en la reserva."
+  - pt: "Ajude-nos a preservar a fauna e flora local: evite descartar lixo na natureza."
+    en: "Help us preserve local wildlife and flora: do not discard trash in nature."
+    es: "Ayúdenos a preservar la fauna y flora local: evite tirar basura en la naturaleza."
+  - pt: "Comunique qualquer problema ou quebra de item imediatamente para que possamos resolver."
+    en: "Report any problem or broken item immediately so we can resolve it."
+    es: "Informe cualquier problema o elemento roto de inmediato para que podamos resolverlo."
 
 extras:
   parking:
-    pt: "Estacionamento credenciado na entrada da vila, a partir de R$ 30,00/dia. A pousada organiza o traslado da bagagem."
-    en: "Authorized parking at the village entrance, from R$ 30.00/day. The pousada arranges luggage transfer."
-    es: "Aparcamiento autorizado en la entrada del pueblo, desde R$ 30,00/día. La posada organiza el traslado del equipaje."
+    pt: "Não há estacionamento na ilha. Recomendamos estacionamentos particulares em Conceição de Jacareí."
+    en: "There is no parking on the island. We recommend private parking lots in Conceição de Jacareí."
+    es: "No hay aparcamiento en la isla. Recomendamos aparcamientos privados en Conceição de Jacareí."
   garbage:
-    pt: "Acondicione o lixo em sacos fechados e deposite no coletor ao lado da recepção. Jeri é uma APA — ajude a preservar."
-    en: "Place garbage in sealed bags and leave it in the bin next to reception. Jeri is a protected area — help us preserve it."
-    es: "Coloque la basura en bolsas cerradas y déjela en el contenedor junto a la recepción. Jeri es un área protegida — ayude a preservarla."
+    pt: "Descarte o lixo nos cestos apropriados da casa. O lixo da vila é recolhido diariamente pela manhã."
+    en: "Dispose of trash in the appropriate bins in the house. Village trash is collected daily in the morning."
+    es: "Deseche la basura en los contenedores adecuados de la casa. La basura del pueblo se recoge diariamente por la mañana."
   rentals:
-    pt: "Alugamos pranchas de windsurf e kitesurf, sandboards e bugues com bugueiro credenciado."
-    en: "We rent windsurf and kitesurf boards, sandboards and buggies with licensed drivers."
-    es: "Alquilamos tablas de windsurf y kitesurf, sandboards y buggies con conductores autorizados."
-  emergency_contact: "+55 88 99100-0000"
+    pt: "Podemos ajudar a agendar passeios de lancha (meia volta ou volta inteira na ilha) e aluguel de caiaques."
+    en: "We can help you book boat tours (half-island or full-island) and kayak rentals."
+    es: "Podemos ayudarle a reservar excursiones en lancha (media vuelta o vuelta entera a la isla) y alquiler de kayaks."
+  emergency_contact: "+55 24 99999-0000"
   emergency_numbers:
-    - { label: "SAMU", number: "192" }
+    - { label: "SAMU / Ambulatório", number: "192" }
     - label: { pt: "Bombeiros", en: "Fire Dept.", es: "Bomberos" }
       number: "193"
-    - label: { pt: "Polícia", en: "Police", es: "Policía" }
+    - label: { pt: "Polícia / DPO", en: "Police", es: "Policía" }
       number: "190"
 
 highlights:
   - photo: "assets/rooms/chale.jpg"
-    title: { pt: "Chalés", en: "Chalets", es: "Chalés" }
+  # Mapeamos a foto existente para a nossa descrição da casa
+    title: { pt: "A Casa", en: "The House", es: "La Casa" }
     text:
-      pt: "Chalés de madeira com varanda e rede, ventilador de teto e decoração artesanal cearense — rústico por fora, confortável por dentro."
-      en: "Wooden chalets with balcony and hammock, ceiling fan and handcrafted decor from Ceará — rustic outside, comfortable inside."
-      es: "Chalés de madera con terraza y hamaca, ventilador de techo y decoración artesanal de Ceará — rústicos por fuera, cómodos por dentro."
+      pt: "Um refúgio acolhedor cercado de mata atlântica, decorado com carinho para fazer você se sentir em casa na Ilha Grande."
+      en: "A cozy retreat surrounded by the Atlantic Forest, decorated with care to make you feel at home in Ilha Grande."
+      es: "Un refugio acogedor rodeado de mata atlántica, decorado con cariño para que se sienta como en casa en Ilha Grande."
   - photo: "assets/rooms/piscina.jpg"
-    title: { pt: "Piscina", en: "Pool", es: "Piscina" }
+    title: { pt: "Área Externa", en: "Outdoor Area", es: "Área Exterior" }
     text:
-      pt: "Piscina cercada por coqueiros, com espreguiçadeiras e bar de sucos naturais — perfeita para o fim de tarde depois das dunas."
-      en: "A pool surrounded by coconut trees, with sun loungers and a fresh juice bar — perfect for late afternoons after the dunes."
-      es: "Piscina rodeada de cocoteros, con tumbonas y bar de jugos naturales — perfecta para la tarde después de las dunas."
+      pt: "Espaço com ducha externa, perfeito para relaxar e tirar a areia do corpo depois de um dia incrível de praia e trilhas."
+      en: "An outdoor space with a shower, perfect to relax and rinse off the sand after an amazing day of beaches and trails."
+      es: "Espacio con ducha exterior, perfecto para relajarse y quitarse la arena después de un día increíble de playa y senderos."
   - photo: "assets/rooms/restaurante.jpg"
-    title: { pt: "Restaurante", en: "Restaurant", es: "Restaurante" }
+    title: { pt: "Cozinha Equipada", en: "Equipped Kitchen", es: "Cocina Equipada" }
     text:
-      pt: "Café da manhã regional com tapioca feita na hora, frutas do sertão e bolo de rolo — servido com vista para o jardim."
-      en: "Regional breakfast with freshly made tapioca, local fruits and traditional cakes — served overlooking the garden."
-      es: "Desayuno regional con tapioca hecha al momento, frutas locales y dulces tradicionales — servido con vista al jardín."
+      pt: "Cozinha completa para você preparar suas refeições, tomar seu café da manhã com tranquilidade e aproveitar a estadia."
+      en: "A fully equipped kitchen for you to prepare your meals, enjoy your breakfast peacefully, and make the most of your stay."
+      es: "Cocina completa para preparar sus comidas, tomar su desayuno con tranquilidad y aprovechar al máximo su estancia."
 
 eat:
-  - name: "Mangaba Beira-Mar"
+  - name: "Restaurante Dom Mario"
     photo: "assets/places/mangaba.jpg"
     price: "$$$"
-    cuisine: { pt: "Frutos do mar", en: "Seafood", es: "Mariscos" }
-    address: "Av. Beira Mar, 480"
+    cuisine: { pt: "Frutos do Mar e Carnes", en: "Seafood & Steaks", es: "Mariscos y Carnes" }
+    address: "Rua da Praia, Vila do Abraão"
     tip:
-      pt: "Peça a moqueca de camarão e reserve mesa na areia para o pôr do sol."
-      en: "Order the shrimp moqueca and book a table on the sand for sunset."
-      es: "Pida la moqueca de camarones y reserve mesa en la arena para el atardecer."
-  - name: "Tapiocaria da Vila"
+      pt: "Famoso pelos pratos de peixe e filés generosos. Excelente para um jantar especial."
+      en: "Famous for its generous fish dishes and steaks. Excellent for a special dinner."
+      es: "Famoso por sus generosos platos de pescado y filetes. Excelente para una cena especial."
+  - name: "Lua e Mar"
     photo: "assets/places/tapiocaria.jpg"
-    price: "$"
-    cuisine: { pt: "Tapiocas e lanches", en: "Tapiocas & snacks", es: "Tapiocas y bocadillos" }
-    address: "Rua Principal, 102"
+    price: "$$$"
+    cuisine: { pt: "Cozinha Caiçara", en: "Local Caiçara Cuisine", es: "Cocina Caiçara Local" }
+    address: "Rua da Praia (Pé na areia), Vila do Abraão"
     tip:
-      pt: "A de carne de sol com queijo coalho é a queridinha dos hóspedes."
-      en: "The sun-dried beef with coalho cheese is a guest favorite."
-      es: "La de carne de sol con queso coalho es la favorita de los huéspedes."
-  - name: "Forno do Vaqueiro"
+      pt: "Experimente o peixe com banana, um clássico caiçara, jantando sob a luz da lua com os pés na areia."
+      en: "Try the fish with banana, a local classic, dining under the moonlight with your feet in the sand."
+      es: "Pruebe el pescado con plátano, um clásico caiçara, cenando bajo la luz de la luna con los pies en la arena."
+  - name: "Pastelaria do Abraão"
     photo: "assets/places/forno.jpg"
-    price: "$$"
-    cuisine: { pt: "Cozinha regional", en: "Regional cuisine", es: "Cocina regional" }
-    address: "Rua do Forró, 58"
-  - name: "Gelato das Dunas"
-    photo: "assets/places/gelato.jpg"
     price: "$"
-    cuisine: { pt: "Sorveteria artesanal", en: "Artisan gelato", es: "Heladería artesanal" }
-    address: "Rua Principal, 230"
+    cuisine: { pt: "Pastéis e Lanches", en: "Pastries & Snacks", es: "Pasteles y Bocadillos" }
+    address: "Rua das Flores, Vila do Abraão"
+    tip:
+      pt: "Pastéis fritos na hora, gigantes e muito recheados. Perfeito para um lanche rápido pós-praia."
+      en: "Freshly fried pastries, huge and very well filled. Perfect for a quick post-beach snack."
+      es: "Pasteles fritos al momento, gigantes y muy rellenos. Perfecto para un refrigerio rápido después de la playa."
+  - name: "Gelateria da Ilha"
+    photo: "assets/places/gelato.jpg"
+    price: "$$"
+    cuisine: { pt: "Gelados Artesanais", en: "Artisanal Gelato", es: "Helado Artesanal" }
+    address: "Rua Principal, Vila do Abraão"
+    tip:
+      pt: "Sabores com frutas locais. O de maracujá com gengibre é extremamente refrescante."
+      en: "Local fruit flavors. The passion fruit with ginger is extremely refreshing."
+      es: "Sabores con frutas locales. El de maracuyá con jengibre es extremadamente refrescante."
 
 visit:
   - name:
-      pt: "Duna do Pôr do Sol"
-      en: "Sunset Dune"
-      es: "Duna del Atardecer"
-    photo: "assets/places/duna.jpg"
-    note:
-      pt: "O ritual de Jeri: suba a duna por volta das 16h30 e aplauda o sol se pondo no mar."
-      en: "Jeri's ritual: climb the dune around 4:30 pm and applaud the sun setting over the sea."
-      es: "El ritual de Jeri: suba la duna hacia las 16:30 y aplauda el sol poniéndose en el mar."
-  - name:
-      pt: "Pedra Furada"
-      en: "Pedra Furada (Arched Rock)"
-      es: "Pedra Furada (Roca Horadada)"
-    photo: "assets/places/pedrafurada.jpg"
-    note:
-      pt: "Caminhada de 40 min pela praia na maré baixa — confira a tábua de marés na recepção."
-      en: "A 40-minute beach walk at low tide — check the tide chart at reception."
-      es: "Caminata de 40 min por la playa en marea baja — consulte la tabla de mareas en la recepción."
-  - name:
-      pt: "Lagoa do Paraíso"
-      en: "Paraíso Lagoon"
-      es: "Laguna del Paraíso"
+      pt: "Lagoa Azul"
+      en: "Blue Lagoon"
+      es: "Lagoa Azul"
     photo: "assets/places/lagoa.jpg"
     note:
-      pt: "Águas cristalinas e redes dentro da lagoa. Passeio de buggy de meio dia — reservamos para você."
-      en: "Crystal-clear water and in-water hammocks. Half-day buggy trip — we can book it for you."
-      es: "Aguas cristalinas y hamacas dentro de la laguna. Paseo en buggy de medio día — lo reservamos por usted."
+      pt: "Uma piscina natural de águas cristalinas ideal para praticar snorkel e nadar com centenas de sargentinhos."
+      en: "A natural pool of crystal-clear water ideal for snorkeling and swimming with hundreds of small colorful fish."
+      es: "Una piscina natural de aguas cristalinas ideal para hacer snorkel y nadar con cientos de peces de colores."
+  - name:
+      pt: "Praia de Lopes Mendes"
+      en: "Lopes Mendes Beach"
+      es: "Playa de Lopes Mendes"
+    photo: "assets/places/pedrafurada.jpg"
+    note:
+      pt: "Eleita uma das praias mais bonitas do mundo. Acesso por trilha a partir de Palmas ou por barco de passeio."
+      en: "Voted one of the most beautiful beaches in the world. Access via trail from Palmas or by tour boat."
+      es: "Votada como una de las playas más hermosas del mundo. Acceso por sendero desde Palmas o en barco turístico."
+  - name:
+      pt: "Praia do Abraãozinho"
+      en: "Abraãozinho Beach"
+      es: "Playa de Abraãozinho"
+    photo: "assets/places/duna.jpg"
+    note:
+      pt: "Águas calmas e rasas, perfeita para ir caminhando (trilha leve de 20 min a partir do Abraão) ou de táxi boat."
+      en: "Calm and shallow waters, perfect for walking (easy 20-min trail from Abraão) or taking a taxi boat."
+      es: "Aguas tranquilas y poco profundas, perfecta para ir caminando (sendero fácil de 20 min desde Abraão) o en taxi boat."
+
 kids_note:
-  pt: "A Lagoa do Paraíso é rasa e tranquila, ideal para crianças. Na vila, a praia principal tem mar calmo pela manhã."
-  en: "Paraíso Lagoon is shallow and calm, ideal for kids. In the village, the main beach has gentle waters in the morning."
-  es: "La Laguna del Paraíso es poco profunda y tranquila, ideal para niños. En el pueblo, la playa principal tiene mar calmo por la mañana."
+  pt: "A Praia do Abraãozinho e a Lagoa Azul são excelentes para crianças devido às águas calmas e abrigadas do vento."
+  en: "Abraãozinho Beach and the Blue Lagoon are excellent for kids due to the calm waters protected from the wind."
+  es: "La Playa de Abraãozinho y la Lagoa Azul son excelentes para niños debido a las aguas tranquilas y protegidas del viento."
 
 checkout_checklist:
-  - { pt: "Confira seus pertences — não deixe nada para trás", en: "Pack your belongings — make sure nothing is left behind", es: "Revise sus pertenencias — no deje nada atrás" }
-  - { pt: "Desligue luzes, ventiladores e aparelhos", en: "Turn off lights, fans and appliances", es: "Apague luces, ventiladores y aparatos" }
-  - { pt: "Deixe as toalhas usadas no cesto do banheiro", en: "Leave used towels in the bathroom basket", es: "Deje las toallas usadas en el cesto del baño" }
-  - { pt: "Feche portas e janelas do chalé", en: "Close the chalet doors and windows", es: "Cierre las puertas y ventanas del chalé" }
-  - { pt: "Devolva as chaves na recepção e faça o check-out", en: "Return the keys at reception and check out", es: "Devuelva las llaves en la recepción y haga el check-out" }
+  - { pt: "Confira todas as gavetas e armários — não deixe seus carregadores para trás", en: "Check all drawers and cabinets — make sure not to leave your chargers behind", es: "Revise todos los cajones y armarios — asegúrese de no dejar sus cargadores atrás" }
+  - { pt: "Desligue o ar-condicionado, luzes e eletrodomésticos", en: "Turn off the air conditioning, lights and appliances", es: "Apague el aire acondicionado, las luces y los electrodomésticos" }
+  - { pt: "Deixe as chaves na mesa principal ou entregue à Mari", en: "Leave the keys on the main table or hand them to Mari", es: "Deje las llaves sobre la mesa principal o entrégueselas a Mari" }
+  - { pt: "Tranque a porta da frente ao sair", en: "Lock the front door upon leaving", es: "Cierre la puerta principal con llave al salir" }
+  - { pt: "Tenha um excelente retorno e volte sempre!", en: "Have a safe trip back and come visit us again!", es: "¡Tenga un excelente viaje de regreso y vuelva pronto!" }
 
 host:
-  name: "Marina & Tales"
+  name: "Mari"
   photo: "assets/host.jpg"
   message:
     pt: >-
-      Oi, sejam muito bem-vindos à Vento Leste! Construímos esta pousada para
-      compartilhar o que Jeri tem de melhor: o vento, as dunas e a vida sem
-      pressa. Qualquer coisa que precisarem, é só chamar na recepção ou no
-      WhatsApp. Aproveitem cada pôr do sol!
+      Olá! Seja muito bem-vindo à Nossa casa Ilha Grande! Preparamos este espaço
+      com muito amor para que você possa vivenciar a beleza e a paz deste paraíso.
+      Espero que aproveite as praias, as trilhas e descanse bastante. Se precisar
+      de qualquer dica ou ajuda, basta me enviar uma mensagem!
     en: >-
-      Hi, welcome to Vento Leste! We built this pousada to share the best of
-      Jeri: the wind, the dunes and the unhurried life. If you need anything,
-      just reach out at reception or on WhatsApp. Enjoy every sunset!
+      Hello! Welcome to Nossa casa Ilha Grande! We prepared this space with lots
+      of love so you can experience the beauty and peace of this paradise. I
+      hope you enjoy the beaches, the trails, and get plenty of rest. If you need
+      any tips or help, just send me a message!
     es: >-
-      ¡Hola, bienvenidos a Vento Leste! Construimos esta posada para
-      compartir lo mejor de Jeri: el viento, las dunas y la vida sin prisa.
-      Cualquier cosa que necesiten, llámennos en la recepción o por WhatsApp.
-      ¡Disfruten cada atardecer!
-  whatsapp: "+5588991000000"
-  email: "reservas@ventoleste.com.br"
-  instagram: "@pousadaventoleste"
-  facebook: "pousadaventoleste"
+      ¡Hola! ¡Bienvenido a Nossa casa Ilha Grande! Preparamos este espacio con
+      mucho amor para que pueda experimentar la belleza y la paz de este paraíso.
+      Espero que disfrute de las playas, los senderos y descanse mucho. Si necesita
+      algún consejo o ayuda, ¡solo envíeme un mensaje!
+  whatsapp: "+5524999990000"
+  email: "nossacasailhagrande@gmail.com"
+  instagram: "@nossacasailhagrande"
+  facebook: "nossacasailhagrande"
   review_url: "https://airbnb.com.br/...link-de-avaliacao"

@@ -13,7 +13,7 @@ Checks:
 - Consistência estrutural: OK
 - Dados críticos presentes: OK
 - Links testados: OK
-- Peso e páginas: OK (184531 bytes HTML, 294230 bytes PDF, 37 páginas)
+- Peso e páginas: OK (186025 bytes HTML, 296297 bytes PDF, 37 páginas)
 
 Itens por seção:
 - rules: 6
